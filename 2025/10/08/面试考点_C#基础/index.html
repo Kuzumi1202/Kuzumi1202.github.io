@@ -1,0 +1,356 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>面试考点_C#基础 | Kuzumi</title><meta name="author" content="陈清规_"><meta name="copyright" content="陈清规_"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="C#基础面向对象面向对象三大特征 继承：提高代码重用度 封装：增强数据安全性 多态：不同环境下，同名方法  简述值类型和引用类型 值类型：包含了所有简单类型（整数、浮点、布尔、字符）、结构体、枚举 引用类型：string、object、class、interface、delegate、array 区别 值存储在内存栈中；引用存储在内存堆中 值类型存取快；引用类型存取慢 栈内存自动释放；堆内存由 G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试考点_C#基础">
+<meta property="og:url" content="http://example.com/2025/10/08/%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9_C#%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Kuzumi">
+<meta property="og:description" content="C#基础面向对象面向对象三大特征 继承：提高代码重用度 封装：增强数据安全性 多态：不同环境下，同名方法  简述值类型和引用类型 值类型：包含了所有简单类型（整数、浮点、布尔、字符）、结构体、枚举 引用类型：string、object、class、interface、delegate、array 区别 值存储在内存栈中；引用存储在内存堆中 值类型存取快；引用类型存取慢 栈内存自动释放；堆内存由 G">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/Posts/Cover_Image.jpg">
+<meta property="article:published_time" content="2025-10-08T09:53:26.000Z">
+<meta property="article:modified_time" content="2025-10-08T09:56:29.135Z">
+<meta property="article:author" content="陈清规_">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/Posts/Cover_Image.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "面试考点_C#基础",
+  "url": "http://example.com/2025/10/08/%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9_C#%E5%9F%BA%E7%A1%80/",
+  "image": "http://example.com/img/Posts/Cover_Image.jpg",
+  "datePublished": "2025-10-08T09:53:26.000Z",
+  "dateModified": "2025-10-08T09:56:29.135Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "陈清规_",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Blog/favicon.ico"><link rel="canonical" href="http://example.com/2025/10/08/%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9_C#%E5%9F%BA%E7%A1%80/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试考点_C#基础',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/bg-cover-image.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><script>window.paceOptions = {
+  restartOnPushState: false
+}
+
+btf.addGlobalFn('pjaxSend', () => {
+  Pace.restart()
+}, 'pace_restart')
+
+</script><link rel="stylesheet" href="/css/progress_bar.css"/><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script><div id="web_bg" style="background: black;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Blog/headIcon.png" onerror="this.onerror=null;this.src='/img/error/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/Posts/Cover_Image.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/Blog/favicon.ico" alt="Logo"><span class="site-name">Kuzumi</span></a><a class="nav-page-title" href="/"><span class="site-name">面试考点_C#基础</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">面试考点_C#基础</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-08T09:53:26.000Z" title="发表于 2025-10-08 17:53:26">2025-10-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-10-08T09:56:29.135Z" title="更新于 2025-10-08 17:56:29">2025-10-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="C-基础"><a href="#C-基础" class="headerlink" title="C#基础"></a>C#基础</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="面向对象三大特征"><a href="#面向对象三大特征" class="headerlink" title="面向对象三大特征"></a>面向对象三大特征</h3><ul>
+<li><strong>继承</strong>：提高代码重用度</li>
+<li><strong>封装</strong>：增强数据安全性</li>
+<li><strong>多态</strong>：不同环境下，同名方法</li>
+</ul>
+<h3 id="简述值类型和引用类型"><a href="#简述值类型和引用类型" class="headerlink" title="简述值类型和引用类型"></a>简述值类型和引用类型</h3><ul>
+<li><strong>值类型</strong>：包含了所有简单类型（整数、浮点、布尔、字符）、结构体、枚举</li>
+<li><strong>引用类型</strong>：string、object、class、interface、delegate、array</li>
+<li>区别<ul>
+<li>值存储在内存栈中；引用存储在内存堆中</li>
+<li>值类型存取快；引用类型存取慢</li>
+<li>栈内存自动释放；堆内存由 GC 自动释放</li>
+<li>值类型在栈中存储的是直接的值；引用类型本身是在堆中；栈中存放的是一个引用类型。</li>
+</ul>
+</li>
+</ul>
+<h3 id="结构体与类的区别"><a href="#结构体与类的区别" class="headerlink" title="结构体与类的区别"></a>结构体与类的区别</h3><ul>
+<li>结构体是值类型，类是引用类型</li>
+<li>结构体不允许继承，类可以继承</li>
+<li>结构体不能显示定义默认构造函数，也没有析构函数</li>
+<li>结构体不可以 new 直接初始化</li>
+<li>结构体不能被静态 static 修饰</li>
+</ul>
+<h3 id="密封类和普通类有什么区别"><a href="#密封类和普通类有什么区别" class="headerlink" title="密封类和普通类有什么区别"></a>密封类和普通类有什么区别</h3><ul>
+<li>密封类不能被继承，密封方法不能被重写</li>
+</ul>
+<h3 id="接口与抽象类的区别"><a href="#接口与抽象类的区别" class="headerlink" title="接口与抽象类的区别"></a>接口与抽象类的区别</h3><ul>
+<li>接口不是类，不可实例化，抽象类可以间接实例化</li>
+<li>接口完全抽象，抽象类部分抽象</li>
+<li>接口可以多继承，抽象类是单继承</li>
+</ul>
+<h3 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h3><ul>
+<li>重载在同类中，重写在子类中</li>
+<li>定义方法不同，重载方法名相同，参数列表不同；重写方法名、参数列表都相同</li>
+<li>调用方式不同，重载使用相同对象以不同参数调用，重写用不同对象以相同参数调用</li>
+<li>多态时机不同，重载编译时多态，重写运行时多态</li>
+</ul>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="ArrayList-和-List-的区别"><a href="#ArrayList-和-List-的区别" class="headerlink" title="ArrayList 和 List 的区别"></a>ArrayList 和 List 的区别</h3><ul>
+<li>ArrayList 不带有泛型，数据类型丢失</li>
+<li>List 带有泛型，数据类型不丢失</li>
+<li>ArrayList 需要装箱拆箱，List 不需要</li>
+</ul>
+<h3 id="链表和数组的区别"><a href="#链表和数组的区别" class="headerlink" title="链表和数组的区别"></a>链表和数组的区别</h3><h4 id="内存布局"><a href="#内存布局" class="headerlink" title="内存布局"></a>内存布局</h4><ul>
+<li>数组：顺序存储，占用一块连续的内存，大小固定，扩容成本大。</li>
+<li>链表：链式存储，非连续的，并且多一个指针，不存在大小限制，天然支持动态扩容。</li>
+</ul>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul>
+<li>随机查找<ul>
+<li>数组可以支持<strong>随机访问</strong>，O(1)的时间复杂度</li>
+<li>链表需要按顺序逐个访问，O(n)的时间复杂度</li>
+</ul>
+</li>
+<li>插入删除<ul>
+<li>数组时间复杂度 O(n)</li>
+<li>链表时间复杂度 O</li>
+</ul>
+</li>
+</ul>
+<h3 id="列表和字典的底层实现"><a href="#列表和字典的底层实现" class="headerlink" title="列表和字典的底层实现"></a>列表和字典的底层实现</h3><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><ul>
+<li>底层实现：动态泛型可扩容数组</li>
+<li>考题：现在 List 容量时 4 个元素，现在要插入一个新元素进去，底层会发生什么。<ul>
+<li>容量扩容</li>
+<li>拷贝+GC</li>
+</ul>
+</li>
+</ul>
+<h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><ul>
+<li>底层实现：<ul>
+<li>Buckets 哈希桶</li>
+<li>entrys 数组用来存储数据</li>
+<li>从 entrys 中删除的数据，构成一个 freelist 空闲数据链表；当插入时，优先插入数据到这个里面去。</li>
+</ul>
+</li>
+<li>考题：现在 Dictionary 容量有 4 个元素，现在插入 1 个新元素进去，此时底层会发生什么。<ul>
+<li>容量扩容</li>
+<li>拷贝+GC</li>
+<li>hash 找 buckets 索引</li>
+<li>将新数据挂载到 buckets 索引处的单链表中</li>
+</ul>
+</li>
+<li>考题：现在 Dictionary 容量有 4 个元素，现在删除 1 个新元素进去，此时底层会发生什么。<ul>
+<li>查找到目标元素</li>
+<li>修改链表指针指向</li>
+<li>将移除的元素加入 freelist</li>
+</ul>
+</li>
+<li>关于 Hash<ul>
+<li>Hash 函数算法<ul>
+<li><strong>Hash 桶算法</strong>：首先将 key 通过 hash 函数生成 hashcode，然后和 hash 桶的数量进行取余，结果用于确认将这个值存储到哪个桶中</li>
+<li><strong>平方取中法</strong>：取 keyword 平方后中间几位作为散列地址</li>
+<li><strong>随机数法</strong>：选一随机函数，取 keyword 的随机值作为散列数据，经常用于 keyword 长度不同的场合</li>
+</ul>
+</li>
+<li>Hash 碰撞算法<ul>
+<li>拉链法（开散列）：在发生哈希冲突的位置，生成一个链表，用来存储哈希冲突的元素</li>
+<li>开放地址法（闭散列）：发生哈希冲突的位置开始，依此向后探测，直到找到下一个空位置位置。</li>
+<li>再哈希法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="设计模型"><a href="#设计模型" class="headerlink" title="设计模型"></a>设计模型</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul>
+<li>概念：构造函数私有，外部无法直接创建</li>
+<li>应用场景：管理器</li>
+</ul>
+<h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><ul>
+<li>概念：通过委托实现 1 对多的订阅关系</li>
+<li>应用场景：事件派发</li>
+</ul>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><ul>
+<li>概念：根据不同条件需求，构建不同的实例</li>
+<li>应用场景：英雄、怪物、npc</li>
+</ul>
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><ul>
+<li>概念：根据不同的条件需求，构建不同的实例，并且在策略模式内封装具体的自定义行为接口</li>
+<li>应用场景：游戏设置界面，根据 GPU 性能，批量设置群组显示效果</li>
+</ul>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><ul>
+<li>概念：有执行队列需求，且支持撤销需求</li>
+<li>应用场景：FPS 输入模块，需要存储输入指令的时候</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="C-中四种访问修饰符是哪些"><a href="#C-中四种访问修饰符是哪些" class="headerlink" title="C#中四种访问修饰符是哪些"></a>C#中四种访问修饰符是哪些</h3><ul>
+<li>属性修饰符<ul>
+<li>Serializable：按值将对象封送到远程服务器</li>
+<li>STATread：是单线程套间的意思，是⼀种线程模型</li>
+<li>MATAThread：是多线程套间的意思，也是⼀种线程模型</li>
+</ul>
+</li>
+<li><strong>存取修饰符</strong><ul>
+<li><strong>public</strong>：存取不受限制</li>
+<li><strong>private</strong>：只有包含该成员的类可以存取</li>
+<li><strong>internal</strong>：只有当前工程可以存取</li>
+<li>protected：只有包含该成员的类和派生类可以存取</li>
+</ul>
+</li>
+<li>类修饰符<ul>
+<li>abstact：抽象类，指示一个类只能作为其他类的基类</li>
+<li>sealed：密封类，指示⼀个类不能被继承</li>
+</ul>
+</li>
+<li><strong>成员修饰符</strong><ul>
+<li>abstract：指示该⽅法或属性没有实现。</li>
+<li>sealed：密封⽅法。可以防⽌在派⽣类中对该⽅法的</li>
+<li><strong>override（重载）</strong>：不是类的每个成员⽅法都可以作为密封⽅法密封⽅法，必须对基类的虚⽅法进⾏重载，提供具体的实现⽅法。所以，在⽅法的声明中，sealed 修饰符总是和 override 修饰符同时使⽤。</li>
+<li><strong>delegate</strong>：委托。⽤来定义⼀个函数指针。C#中的事件驱动是基于 delegate + event 的。</li>
+<li><strong>const</strong>：指定该成员的值只读不允许修改。</li>
+<li>event：声明⼀个事件。</li>
+<li>extern：指示⽅法在外部实现。</li>
+<li><strong>override（重写）</strong>：对由基类继承成员的新实现。</li>
+<li>readonly：指示⼀个域只能在声明时以及相同类的内部被赋值。</li>
+<li><strong>static</strong>：指示⼀个成员属于类型本身，⽽不是属于特定的对象。即在定义后可不经实例化，就可使⽤。</li>
+<li>virtual：指示⼀个⽅法或存取器的实现可以在继承类中被覆盖。</li>
+<li>new：在派⽣类中隐藏指定的基类成员，从⽽实现重写的功能。 若要隐藏继承类的成员，请使⽤相同名称在派⽣类中声明该成员，并⽤ new 修饰符修饰它。</li>
+</ul>
+</li>
+</ul>
+<h3 id="装箱拆箱"><a href="#装箱拆箱" class="headerlink" title="装箱拆箱"></a>装箱拆箱</h3><ul>
+<li>装箱：装箱就是将值类型转换为引用类型</li>
+<li>拆箱：引用类型转化为值类型</li>
+<li>装箱性能问题：每次装箱都要在堆里面 new 一个新对象，当量大时会影响程序效率</li>
+</ul>
+<h3 id="C-垃圾回收机制"><a href="#C-垃圾回收机制" class="headerlink" title="C#垃圾回收机制"></a>C#垃圾回收机制</h3><ul>
+<li><strong>三代标记清除压缩算法</strong><ul>
+<li>0 代：从未被标记为回收的新分配对象</li>
+<li>1 代：0 代垃圾回收中没有被回收的对象</li>
+<li>2 代：1 代垃圾回收后任然没有回收的对象</li>
+<li>此外在调整分代时，有内存管理的操作，因而避免了碎片化</li>
+</ul>
+</li>
+</ul>
+</article><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/Posts/Cover_Image.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Blog/headIcon.png" onerror="this.onerror=null;this.src='/img/error/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">陈清规_</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Kuzumi1202"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Kuzumi1202" target="_blank" title="Github"><i class="fab fa-github" style="color: #FFFFFF;"></i></a><a class="social-icon" href="mailto:kuzumi1202@163.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #FFFFFF;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">在清晨把自己踩进烂泥</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.</span> <span class="toc-text">C#基础</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.</span> <span class="toc-text">面向对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E5%BE%81"><span class="toc-number">1.1.1.</span> <span class="toc-text">面向对象三大特征</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E8%BF%B0%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">简述值类型和引用类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%8E%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.3.</span> <span class="toc-text">结构体与类的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%86%E5%B0%81%E7%B1%BB%E5%92%8C%E6%99%AE%E9%80%9A%E7%B1%BB%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.4.</span> <span class="toc-text">密封类和普通类有什么区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.5.</span> <span class="toc-text">接口与抽象类的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%BD%BD%E5%92%8C%E9%87%8D%E5%86%99%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.1.6.</span> <span class="toc-text">重载和重写的区别</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.</span> <span class="toc-text">数据结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ArrayList-%E5%92%8C-List-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.1.</span> <span class="toc-text">ArrayList 和 List 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E5%92%8C%E6%95%B0%E7%BB%84%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.2.</span> <span class="toc-text">链表和数组的区别</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">内存布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%A7%E8%83%BD"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">性能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%97%E8%A1%A8%E5%92%8C%E5%AD%97%E5%85%B8%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.2.3.</span> <span class="toc-text">列表和字典的底层实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#List"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dictionary"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">Dictionary</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.</span> <span class="toc-text">设计模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.1.</span> <span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.2.</span> <span class="toc-text">观察者模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.3.</span> <span class="toc-text">工厂模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.4.</span> <span class="toc-text">策略模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.5.</span> <span class="toc-text">命令模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">1.4.</span> <span class="toc-text">其他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E4%B8%AD%E5%9B%9B%E7%A7%8D%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6%E6%98%AF%E5%93%AA%E4%BA%9B"><span class="toc-number">1.4.1.</span> <span class="toc-text">C#中四种访问修饰符是哪些</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1"><span class="toc-number">1.4.2.</span> <span class="toc-text">装箱拆箱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6"><span class="toc-number">1.4.3.</span> <span class="toc-text">C#垃圾回收机制</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/10/08/%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9_C#%E5%9F%BA%E7%A1%80/" title="面试考点_C#基础"><img src="/img/Posts/Cover_Image.jpg" onerror="this.onerror=null;this.src='/img/error/404.jpg'" alt="面试考点_C#基础"/></a><div class="content"><a class="title" href="/2025/10/08/%E9%9D%A2%E8%AF%95%E8%80%83%E7%82%B9_C#%E5%9F%BA%E7%A1%80/" title="面试考点_C#基础">面试考点_C#基础</a><time datetime="2025-10-08T09:53:26.000Z" title="发表于 2025-10-08 17:53:26">2025-10-08</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/Posts/Cover_Image.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2025 By 陈清规_</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.3.5</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
