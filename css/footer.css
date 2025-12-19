@@ -1,4 +1,3 @@
-/*https://codepen.io/poojanahelia/pen/Exabvdy*/
 
 /* 页脚容器样式 - 设置透明背景和基础文本颜色 */
 #footer {
@@ -183,7 +182,7 @@
 
 /* 社交媒体背景路径填充色 */
 .my-footer-social-amoeba-path {
-    fill: #8c0319;
+    fill: #300000;
 }
 
 /* 电子邮件社交链接定位 */
@@ -216,15 +215,19 @@
     top: 50%;
 }
 
-/* 社交图标SVG显示为块级元素 */
-.my-footer-social-icon-svg {
+/* Iconfont图标基础样式 */
+.my-footer-social-link .iconfont {
     display: block;
-}
-
-/* 社交图标路径填充色和过渡效果 */
-.my-footer-social-icon-path {
-    fill: #fffff2;
-    transition: fill .2s;
+    font-size: 24px; /* 控制图标大小 */
+    color: #fffff2; /* 控制图标颜色 */
+    text-align: center;
+    line-height: 1;
+    transition: color .2s; /* 保留过渡效果 */
+    /* 确保图标在容器中垂直水平居中 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* 微博社交链接定位 */
@@ -251,9 +254,14 @@
     width: 62px;
 }
 
+/* 为GitHub图标调整单独大小（因其容器较大） */
+.my-footer-social-link.github .iconfont {
+    font-size: 32px; /* GitHub图标可以稍大一些 */
+}
+
 /* 版权信息区域样式 */
 .my-footer-copyright {
-    background-color: #8c0319;
+    background-color: #300000;
     color: #fff;
     padding: 15px 30px;
     text-align: center;
@@ -293,6 +301,23 @@
     max-height: 200px;
 }
 
+/* 添加各图标悬停颜色 */
+.my-footer-social-link.github:hover .iconfont {
+    color: #333; /* GitHub 深灰 */
+}
+
+.my-footer-social-link.email:hover .iconfont {
+    color: #ea4335; /* Gmail 红 */
+}
+
+.my-footer-social-link.weibo:hover .iconfont {
+    color: #ea4335; /* 微博红 */
+}
+
+.my-footer-social-link.bilibili:hover .iconfont {
+    color: #fb7299; /* 哔哩哔哩粉 */
+}
+
 /* 媒体查询 - 针对不同屏幕尺寸的响应式设计 */
 
 /* 小屏幕手机 (320px-479px) */
@@ -309,6 +334,14 @@
     /* 在小屏幕上隐藏logo */
     .my-footer-logo {
         display: none;
+    }
+    
+    /* 【响应式调整】小屏幕调整图标大小 */
+    .my-footer-social-link .iconfont {
+        font-size: 20px;
+    }
+    .my-footer-social-link.github .iconfont {
+        font-size: 26px;
     }
 }
 
