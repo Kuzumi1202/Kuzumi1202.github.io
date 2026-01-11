@@ -1,0 +1,497 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>面试考点_热更新机制 | Kuzumi</title><meta name="author" content="陈清规_"><meta name="copyright" content="陈清规_"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="热更新框架Assets需要打 Bundle Lua UI 预制体 图片   模型 预制体 动作 贴图 材质   特效 预制体 贴图 材质   声音 音效 音乐   动画  不需要打 Bundle xlua C# 工具 Bundle 构建工具 其他工具    与 Lua 交互C#调用 Lua 加载 Lua 脚本 执行 Lua 逻辑  Lua 调用 C C#给 Lua 提供的接口 资源加载 资源管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试考点_热更新机制">
+<meta property="og:url" content="http://example.com/posts/cb93a20b/index.html">
+<meta property="og:site_name" content="Kuzumi">
+<meta property="og:description" content="热更新框架Assets需要打 Bundle Lua UI 预制体 图片   模型 预制体 动作 贴图 材质   特效 预制体 贴图 材质   声音 音效 音乐   动画  不需要打 Bundle xlua C# 工具 Bundle 构建工具 其他工具    与 Lua 交互C#调用 Lua 加载 Lua 脚本 执行 Lua 逻辑  Lua 调用 C C#给 Lua 提供的接口 资源加载 资源管理">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/Posts/Cover_Image.jpg">
+<meta property="article:published_time" content="2025-10-28T18:06:33.000Z">
+<meta property="article:modified_time" content="2026-01-11T15:02:46.964Z">
+<meta property="article:author" content="陈清规_">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="XLua">
+<meta property="article:tag" content="热更新">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/Posts/Cover_Image.jpg"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "面试考点_热更新机制",
+  "url": "http://example.com/posts/cb93a20b/",
+  "image": "http://example.com/img/Posts/Cover_Image.jpg",
+  "datePublished": "2025-10-28T18:06:33.000Z",
+  "dateModified": "2026-01-11T15:02:46.964Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "陈清规_",
+      "url": "http://example.com/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/Blog/favicon.ico"><link rel="canonical" href="http://example.com/posts/cb93a20b/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '面试考点_热更新机制',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_5086666_l6db03mbae.css"><link rel="stylesheet" href="/css/bg-cover-image.css"><link rel="stylesheet" href="/css/nav.css"><link rel="stylesheet" href="/css/footer.css"><link rel="stylesheet" href="/css/category.css"><link rel="stylesheet" href="/css/personal-profile.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="/css/categoryBar.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiperstyle.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg" style="background: black;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/Blog/headIcon.png" onerror="this.onerror=null;this.src='/img/error/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/Posts/Cover_Image.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Kuzumi</span></a><a class="nav-page-title" href="/"><span class="site-name">面试考点_热更新机制</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div><div id="nav-right"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i></span></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">面试考点_热更新机制</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-10-28T18:06:33.000Z" title="发表于 2025-10-28 18:06:33">2025-10-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-11T15:02:46.964Z" title="更新于 2026-01-11 15:02:46">2026-01-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">游戏开发</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="热更新框架"><a href="#热更新框架" class="headerlink" title="热更新框架"></a>热更新框架</h1><h2 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h2><h3 id="需要打-Bundle"><a href="#需要打-Bundle" class="headerlink" title="需要打 Bundle"></a>需要打 Bundle</h3><ul>
+<li>Lua</li>
+<li>UI<ul>
+<li>预制体</li>
+<li>图片</li>
+</ul>
+</li>
+<li>模型<ul>
+<li>预制体</li>
+<li>动作</li>
+<li>贴图</li>
+<li>材质</li>
+</ul>
+</li>
+<li>特效<ul>
+<li>预制体</li>
+<li>贴图</li>
+<li>材质</li>
+</ul>
+</li>
+<li>声音<ul>
+<li>音效</li>
+<li>音乐</li>
+</ul>
+</li>
+<li>动画</li>
+</ul>
+<h3 id="不需要打-Bundle"><a href="#不需要打-Bundle" class="headerlink" title="不需要打 Bundle"></a>不需要打 Bundle</h3><ul>
+<li>xlua</li>
+<li>C#</li>
+<li>工具<ul>
+<li>Bundle 构建工具</li>
+<li>其他工具</li>
+</ul>
+</li>
+</ul>
+<h2 id="与-Lua-交互"><a href="#与-Lua-交互" class="headerlink" title="与 Lua 交互"></a>与 Lua 交互</h2><h3 id="C-调用-Lua"><a href="#C-调用-Lua" class="headerlink" title="C#调用 Lua"></a>C#调用 Lua</h3><ul>
+<li>加载 Lua 脚本</li>
+<li>执行 Lua 逻辑</li>
+</ul>
+<h3 id="Lua-调用-C"><a href="#Lua-调用-C" class="headerlink" title="Lua 调用 C"></a>Lua 调用 C</h3><ul>
+<li>C#给 Lua 提供的接口<ul>
+<li>资源加载</li>
+<li>资源管理</li>
+<li>时间管理</li>
+<li>场景加载</li>
+<li>声音加载</li>
+<li>模型加载</li>
+<li>UI 管理</li>
+</ul>
+</li>
+</ul>
+<h1 id="热更新方案"><a href="#热更新方案" class="headerlink" title="热更新方案"></a>热更新方案</h1><h2 id="整包"><a href="#整包" class="headerlink" title="整包"></a>整包</h2><ul>
+<li>策略：框架+整包资源</li>
+<li>优点：首次更新少</li>
+<li>缺点：安装包下载时间长，首次安装久</li>
+</ul>
+<h2 id="分包-海外市场用的多"><a href="#分包-海外市场用的多" class="headerlink" title="分包 -海外市场用的多"></a>分包 -海外市场用的多</h2><ul>
+<li>策略：框架</li>
+<li>优点：安装包小，下载快，安装极速</li>
+<li>缺点：首次更新时间久</li>
+</ul>
+<h1 id="资源更新"><a href="#资源更新" class="headerlink" title="资源更新"></a>资源更新</h1><h2 id="整包-1"><a href="#整包-1" class="headerlink" title="整包"></a>整包</h2><ul>
+<li>C#启动</li>
+<li>检查是否初次安装<ul>
+<li>Y：释放包内资源<ul>
+<li>streamingAssets 只读目录 -&gt; persistenDataPath 可读写目录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>检查版本文件（是否需要更新）<ul>
+<li>Y：下载补丁</li>
+</ul>
+</li>
+<li>读取文件列表</li>
+<li>加载 Bundle</li>
+<li>启动 Lua</li>
+</ul>
+<h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><ul>
+<li>C#启动</li>
+<li>检查版本文件（是否需要更新）<ul>
+<li>Y：下载补丁</li>
+</ul>
+</li>
+<li>读取文件列表</li>
+<li>加载 Bundle</li>
+<li>启动 Lua</li>
+</ul>
+<h1 id="热更新代码"><a href="#热更新代码" class="headerlink" title="热更新代码"></a>热更新代码</h1><h2 id="代码流程"><a href="#代码流程" class="headerlink" title="代码流程"></a>代码流程</h2><h3 id="检查初次安装"><a href="#检查初次安装" class="headerlink" title="检查初次安装"></a>检查初次安装</h3><ul>
+<li>只读目录只有热更资源</li>
+<li>可读写目录没有热更资源</li>
+<li>只需要判断 filelist 文件是否存在<ul>
+<li>即最后写入 filelist</li>
+</ul>
+</li>
+</ul>
+<h3 id="检查更新"><a href="#检查更新" class="headerlink" title="检查更新"></a>检查更新</h3><ul>
+<li>比较本地的 filelist 和服务器上的 filelist</li>
+</ul>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><ul>
+<li>PathUtil.cs：定义只读和可读写目录</li>
+<li>AppConst.cs:：热更新资源地址</li>
+<li>HotUpdate.cs：<ul>
+<li>协程 DownLoadFile()<ul>
+<li>下载一个文件</li>
+<li>下载多个文件</li>
+</ul>
+</li>
+<li>DownFileInfo()</li>
+</ul>
+</li>
+</ul>
+<h3 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h3><ul>
+<li>FileUtil.cs(类)<ul>
+<li>IsExists()</li>
+<li>WriteFile()</li>
+</ul>
+</li>
+</ul>
+<h3 id="解析-filelist"><a href="#解析-filelist" class="headerlink" title="解析 filelist"></a>解析 filelist</h3><ul>
+<li>HotUpdate.cs<ul>
+<li>GetFileList()</li>
+</ul>
+</li>
+</ul>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a><a class="post-meta__tags" href="/tags/XLua/">XLua</a><a class="post-meta__tags" href="/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/">热更新</a></div><div class="post-share"><div class="social-share" data-image="/img/Posts/Cover_Image.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/2f5b963f/" title="面试考点_Unity基础"><img class="cover" src="/img/Posts/Cover_Image.jpg" onerror="onerror=null;src='/img/error/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">面试考点_Unity基础</div></div><div class="info-2"><div class="info-item-1">Unity 基础MonoBehaviour（生命周期）概述MonoBehaviour 是 Unity 中所有脚本的基类，提供了一系列在特定时间自动调用的生命周期方法。 完整生命周期表格    阶段 方法 调用时机 用途说明 执行频率     初始化阶段 Awake() 脚本实例被创建时立即调用 初始化变量、获取组件引用 仅一次    OnEnable() 脚本组件启用时调用 注册事件、启动协程 每次启用时    Start() 在所有 Awake() 调用后，第一次 Update 前 初始化依赖其他对象的内容 仅一次   物理更新阶段 FixedUpdate() 固定时间间隔调用 物理相关计算、刚体操作 固定频率    OnTriggerXXX() 触发器碰撞发生时 处理触发器交互 事件触发时    OnCollisionXXX() 碰撞体碰撞发生时 处理物理碰撞 事件触发时   游戏逻辑阶段 Update() 每帧调用 游戏核心逻辑、输入处理 每帧    LateUpdate() 所有 Update...</div></div></div></a><a class="pagination-related" href="/posts/2d5ee4f4/" title="面试考点_计组基础"><img class="cover" src="/img/Posts/Cover_Image.jpg" onerror="onerror=null;src='/img/error/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">面试考点_计组基础</div></div><div class="info-2"><div class="info-item-1">计算机硬件结构 运算器：实现对数据的算术和逻辑运算 控制器：运算结果和源操作数的存放区 存储器 内部存储器：容量小、速度快、存放临时数据 外部存储器：速度慢、长期存储   输入设备 输出设备  CPU功能：实现程序控制、操作控制、时间控制、数据处理功能  运算器 控制器 寄存器 内部总线  运算器功能：执行所有的算术运算；执行所有的逻辑运算并进行逻辑测试  算术逻辑单元 ALU：实现对数据的算术和逻辑运算 累加器 AC：运算结果或操作数存放区 数据缓冲寄存器 DR：暂时存放内存的指令或数据 状态条件寄存器 PSW：保存指令运行结果的条件码内容，如溢出标志等  控制器功能：控制整个 CPU 工作，包括程序控制、时序控制等  指令寄存器 IR：暂存 CPU 正在执行的指令 程序计数器 PC：存放指令执行地址 地址寄存器 AR：保存当前 CPU 访问的内存地址 指令译码器 ID：分析指令操作码  指令和运算计算机指令组成：指令 = 操作码 +...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/ded75e1a/" title="面试考点_计网基础"><img class="cover" src="/img/Posts/Cover_Image.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-10</div><div class="info-item-2">面试考点_计网基础</div></div><div class="info-2"><div class="info-item-1">网络基础三次握手四次挥手三次握手（建立 TCP 连接） 客户端发送连接请求报文段 服务器收到请求报文段 服务器收到请求，并发送确认报文段；客服端收到确认，并发送确认报文段。  四次挥手（终止 TCP 连接） 客户端打断发送终止请求报文段 服务器收到请求，并发送确认报文段 客户端收到确认，并发送确认报文段 服务收到确认并终止连接  TCP 和 UDP TCP：传输控制协议 UDP：用户数据报协议 两者区别： 是否连接： TCP 是面向连接 UDP 是面向无连接   是否可靠： TCP 可靠 UDP 不可靠   连接对象个数： TCP：1 对 1 UDP：1 对 1，1 对多，多对 1，多对多   传输方式： TCP：面向字节流 UDP：面向报文   首部开销： TCP：TCP 开销大，最小 20 字节 UDP：UDP 仅 8 字节      线程和进程 线程：同一类线程共享代码和数据空间，每一个线程有独立的运行栈和程序计数器（PC），线程切换开销最小。CPU 调度的基本单位。 进程：每个进程都有独立的代码和数据空间，进程间的切换会有较大开销，一个进程包含 1-n...</div></div></div></a><a class="pagination-related" href="/posts/2d5ee4f4/" title="面试考点_计组基础"><img class="cover" src="/img/Posts/Cover_Image.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-12-10</div><div class="info-item-2">面试考点_计组基础</div></div><div class="info-2"><div class="info-item-1">计算机硬件结构 运算器：实现对数据的算术和逻辑运算 控制器：运算结果和源操作数的存放区 存储器 内部存储器：容量小、速度快、存放临时数据 外部存储器：速度慢、长期存储   输入设备 输出设备  CPU功能：实现程序控制、操作控制、时间控制、数据处理功能  运算器 控制器 寄存器 内部总线  运算器功能：执行所有的算术运算；执行所有的逻辑运算并进行逻辑测试  算术逻辑单元 ALU：实现对数据的算术和逻辑运算 累加器 AC：运算结果或操作数存放区 数据缓冲寄存器 DR：暂时存放内存的指令或数据 状态条件寄存器 PSW：保存指令运行结果的条件码内容，如溢出标志等  控制器功能：控制整个 CPU 工作，包括程序控制、时序控制等  指令寄存器 IR：暂存 CPU 正在执行的指令 程序计数器 PC：存放指令执行地址 地址寄存器 AR：保存当前 CPU 访问的内存地址 指令译码器 ID：分析指令操作码  指令和运算计算机指令组成：指令 = 操作码 +...</div></div></div></a><a class="pagination-related" href="/posts/ca1b96bb/" title="面试考点_C#基础"><img class="cover" src="/img/Posts/Cover_Image.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-08</div><div class="info-item-2">面试考点_C#基础</div></div><div class="info-2"><div class="info-item-1">C#基础面向对象面向对象三大特征 继承：提高代码重用度 封装：增强数据安全性 多态：不同环境下，同名方法  简述值类型和引用类型 值类型：包含了所有简单类型（整数、浮点、布尔、字符）、结构体、枚举 引用类型：string、object、class、interface、delegate、array 区别 值存储在内存栈中；引用存储在内存堆中 值类型存取快；引用类型存取慢 栈内存自动释放；堆内存由 GC 自动释放 值类型在栈中存储的是直接的值；引用类型本身是在堆中；栈中存放的是一个引用类型。    结构体与类的区别 结构体是值类型，类是引用类型 结构体不允许继承，类可以继承 结构体不能显示定义默认构造函数，也没有析构函数 结构体不可以 new 直接初始化 结构体不能被静态 static...</div></div></div></a><a class="pagination-related" href="/posts/311d5b73/" title="面试考点_Lua基础"><img class="cover" src="/img/Posts/Cover_Image.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-08</div><div class="info-item-2">面试考点_Lua基础</div></div><div class="info-2"><div class="info-item-1">Lua 基础基础语法考察 paris 和 iparis 的区别 paris：遍历数组、hash；nil 可以输出 iparis：只能遍历非空数组部分   点和冒号调用函数的区别 点：无法传递自身，需要显示传递 冒号：隐式传递自身    面向对象 Lua 如何实现面向对象 metable 元表   index 和 newindex 的区别 index（访问）：当子脚本不存在被访问的元素时，lua 就会调用 index，去父脚本中查找该元素 newindex（更新）：当子脚本不存在被访问的元素时，我们却给该元素赋值时，默认我们没有给 newindex 赋值，Lua 直接修改父脚本里的同名元素的值；若我们给 newindex 赋值了，即指定一个函数，Lua 就会调用该函数，而不会直接去修改父脚本里的同名元素的值。   rawget 和 rawset 有什么区别 rawget：访问时，不想从 index 对应的原方法中查找值 rawset：更新时，不想执行 newindex 对应的元方法    Lua 交互原理Lua 与 C 交互 实现方式：Lua 和 C 是通过虚拟栈来交互的 C...</div></div></div></a><a class="pagination-related" href="/posts/2f5b963f/" title="面试考点_Unity基础"><img class="cover" src="/img/Posts/Cover_Image.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-10-10</div><div class="info-item-2">面试考点_Unity基础</div></div><div class="info-2"><div class="info-item-1">Unity 基础MonoBehaviour（生命周期）概述MonoBehaviour 是 Unity 中所有脚本的基类，提供了一系列在特定时间自动调用的生命周期方法。 完整生命周期表格    阶段 方法 调用时机 用途说明 执行频率     初始化阶段 Awake() 脚本实例被创建时立即调用 初始化变量、获取组件引用 仅一次    OnEnable() 脚本组件启用时调用 注册事件、启动协程 每次启用时    Start() 在所有 Awake() 调用后，第一次 Update 前 初始化依赖其他对象的内容 仅一次   物理更新阶段 FixedUpdate() 固定时间间隔调用 物理相关计算、刚体操作 固定频率    OnTriggerXXX() 触发器碰撞发生时 处理触发器交互 事件触发时    OnCollisionXXX() 碰撞体碰撞发生时 处理物理碰撞 事件触发时   游戏逻辑阶段 Update() 每帧调用 游戏核心逻辑、输入处理 每帧    LateUpdate() 所有 Update...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/Blog/headIcon.png" onerror="this.onerror=null;this.src='/img/error/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">陈清规_</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Kuzumi1202"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Kuzumi1202" target="_blank" title="Github"><i class="fab fa-github" style="color: #FFFFFF;"></i></a><a class="social-icon" href="mailto:kuzumi1202@163.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #FFFFFF;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><div class="announcement-profile">
+  <!-- 核心身份介绍 -->
+  <p class="title">INFJ程序员、游戏开发者</p>
+  <hr class="divider">
+  <!-- 兴趣爱好 -->
+  <p class="hobby">喜欢为爱奔赴万里</p>
+  <!-- 署名 -->
+  <p class="signature">文颖倩、李霖霏</p>
+  <hr class="divider">
+  <!-- 寄语 -->
+  <p class="wish">愿你我皆能被这世间温柔以待</p>
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0%E6%A1%86%E6%9E%B6"><span class="toc-number">1.</span> <span class="toc-text">热更新框架</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Assets"><span class="toc-number">1.1.</span> <span class="toc-text">Assets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9C%80%E8%A6%81%E6%89%93-Bundle"><span class="toc-number">1.1.1.</span> <span class="toc-text">需要打 Bundle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E6%89%93-Bundle"><span class="toc-number">1.1.2.</span> <span class="toc-text">不需要打 Bundle</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E-Lua-%E4%BA%A4%E4%BA%92"><span class="toc-number">1.2.</span> <span class="toc-text">与 Lua 交互</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-%E8%B0%83%E7%94%A8-Lua"><span class="toc-number">1.2.1.</span> <span class="toc-text">C#调用 Lua</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lua-%E8%B0%83%E7%94%A8-C"><span class="toc-number">1.2.2.</span> <span class="toc-text">Lua 调用 C</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0%E6%96%B9%E6%A1%88"><span class="toc-number">2.</span> <span class="toc-text">热更新方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%8C%85"><span class="toc-number">2.1.</span> <span class="toc-text">整包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%85-%E6%B5%B7%E5%A4%96%E5%B8%82%E5%9C%BA%E7%94%A8%E7%9A%84%E5%A4%9A"><span class="toc-number">2.2.</span> <span class="toc-text">分包 -海外市场用的多</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%9B%B4%E6%96%B0"><span class="toc-number">3.</span> <span class="toc-text">资源更新</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B4%E5%8C%85-1"><span class="toc-number">3.1.</span> <span class="toc-text">整包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%8C%85"><span class="toc-number">3.2.</span> <span class="toc-text">分包</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%83%AD%E6%9B%B4%E6%96%B0%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">热更新代码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%B5%81%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">代码流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%88%9D%E6%AC%A1%E5%AE%89%E8%A3%85"><span class="toc-number">4.1.1.</span> <span class="toc-text">检查初次安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E6%9B%B4%E6%96%B0"><span class="toc-number">4.1.2.</span> <span class="toc-text">检查更新</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.2.</span> <span class="toc-text">代码实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.1.</span> <span class="toc-text">下载文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6"><span class="toc-number">4.2.2.</span> <span class="toc-text">写入文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90-filelist"><span class="toc-number">4.2.3.</span> <span class="toc-text">解析 filelist</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/7827ab9a/" title="2026年01月11日"><img src="/img/Posts/Cover_Image.jpg" onerror="this.onerror=null;this.src='/img/error/404.jpg'" alt="2026年01月11日"/></a><div class="content"><a class="title" href="/posts/7827ab9a/" title="2026年01月11日">2026年01月11日</a><time datetime="2026-01-11T22:43:52.000Z" title="发表于 2026-01-11 22:43:52">2026-01-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2d5ee4f4/" title="面试考点_计组基础"><img src="/img/Posts/Cover_Image.jpg" onerror="this.onerror=null;this.src='/img/error/404.jpg'" alt="面试考点_计组基础"/></a><div class="content"><a class="title" href="/posts/2d5ee4f4/" title="面试考点_计组基础">面试考点_计组基础</a><time datetime="2025-12-10T16:03:51.000Z" title="发表于 2025-12-10 16:03:51">2025-12-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/cb93a20b/" title="面试考点_热更新机制"><img src="/img/Posts/Cover_Image.jpg" onerror="this.onerror=null;this.src='/img/error/404.jpg'" alt="面试考点_热更新机制"/></a><div class="content"><a class="title" href="/posts/cb93a20b/" title="面试考点_热更新机制">面试考点_热更新机制</a><time datetime="2025-10-28T18:06:33.000Z" title="发表于 2025-10-28 18:06:33">2025-10-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2f5b963f/" title="面试考点_Unity基础"><img src="/img/Posts/Cover_Image.jpg" onerror="this.onerror=null;this.src='/img/error/404.jpg'" alt="面试考点_Unity基础"/></a><div class="content"><a class="title" href="/posts/2f5b963f/" title="面试考点_Unity基础">面试考点_Unity基础</a><time datetime="2025-10-10T16:05:33.000Z" title="发表于 2025-10-10 16:05:33">2025-10-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ded75e1a/" title="面试考点_计网基础"><img src="/img/Posts/Cover_Image.jpg" onerror="this.onerror=null;this.src='/img/error/404.jpg'" alt="面试考点_计网基础"/></a><div class="content"><a class="title" href="/posts/ded75e1a/" title="面试考点_计网基础">面试考点_计网基础</a><time datetime="2025-10-10T16:03:51.000Z" title="发表于 2025-10-10 16:03:51">2025-10-10</time></div></div></div></div></div></div></main><footer id="footer" style="background: black;"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><!-- 页脚顶部波浪装饰 -->
+<div class="my-footer-svg-div">
+  <!-- 波浪形SVG，创建页脚顶部的流体过渡效果 -->
+  <svg class="my-footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
+  <path class="my-footer-wave-path" d="M851.8,100c125,0,288.3-45,348.2-64V0H0v44c3.7-1,7.3-1.9,11-2.9C80.7,22,151.7,10.8,223.5,6.3C276.7,2.9,330,4,383,9.8 c52.2,5.7,103.3,16.2,153.4,32.8C623.9,71.3,726.8,100,851.8,100z"></path>
+  </svg>    
+</div>
+
+<!-- 页脚主要内容区域 -->
+<div class="my-footer-content-div" >
+<div class="my-footer-content">
+    <!-- 第一列：Logo和"开始"菜单 -->
+    <div class="my-footer-content-column">
+        <div class="my-footer-logo">
+            <a class="my-footer-logo-link" href="#">
+                <!-- 屏幕阅读器可访问的隐藏文本 -->
+                <span class="hidden-link-text">LOGO</span>
+                <!-- 白色Logo图片 -->
+                <img src="/img/blog/icon.png" style="height:45%; width:45%">
+            </a>
+        </div>
+        <div class="my-footer-menu">
+            <h2 class="my-footer-menu-name">开始</h2>
+            <ul id="menu-get-started" class="my-footer-menu-list">
+                <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                    <a href="/pages/about.html">关于本站</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- 第二列：快速链接 -->
+    <div class="my-footer-content-column">
+        <div class="my-footer-menu">
+            <h2 class="my-footer-menu-name">快速链接</h2>
+            <ul id="menu-company" class="my-footer-menu-list">
+                <!-- 建站工具链接：Hexo和Butterfly主题 -->
+                <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                    <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">Hexo</a>&nbsp;
+                    ⨯&nbsp;
+                    <a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a>
+                </li>
+                <!-- 站点导航链接 -->
+                <li class="menu-item menu-item-type-taxonomy menu-item-object-category">
+                    <a href="/archives/">时间轴</a>&nbsp;
+                    |&nbsp;
+                    <a href="/DO_NOT_render/cosmoscope/cosmoscope_trim.html">关系图</a>&nbsp;
+                    |&nbsp;
+                    <a href="/pages/categories/">分类</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- 第三列：法律声明和联系方式 -->
+    <div class="my-footer-content-column">
+        <div class="my-footer-menu">
+            <h2 class="my-footer-menu-name">法律声明</h2>
+            <ul id="menu-legal" class="my-footer-menu-list">
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
+                    <a href="/pages/privacy.html">隐私政策</a>
+                </li>
+            </ul>
+        </div>
+        <div class="my-footer-call-to-action">
+            <h2 class="my-footer-call-to-action-title">联系本站</h2>
+            <ul id="menu-legal" class="my-footer-menu-list">
+                <!-- 微信公众号链接 -->
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
+                    <a href="/DO_NOT_render/wechatOA/index.html">微信公众号</a>
+                </li>
+
+                <!-- 邮箱链接（使用混淆技术防止爬虫抓取） -->
+                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-170434">
+                    <a class="my-footer-call-to-action-link" href="mailto:Kuzumi1202@163.com" target="_self">
+                        <span style="display:none">@</span>ku<!-- >@ -->zum<!-- >@. -->i120<span style="display:none">@</span>2@163.com
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <!-- 第四列：认证徽章和版权信息 -->
+    <div class="my-footer-content-column">
+        <ul id="menu-get-started" class="my-footer-menu-list">
+
+            <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                <a href="https://notbyai.fyi/" target="_blank" rel="external nofollow noopener noreferrer">
+                <img class="img-not-ai" src="/img/footer/logo.png" alt="This is k's blog"></a>
+            </li>
+
+            <li class="menu-item menu-item-type-post_type menu-item-object-product">
+                <a href="/pages/cc.html" ><img src="/img/footer/name.png" alt="署名"></a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 社交链接区域（带有特殊背景形状） -->
+    <div class="my-footer-social-links">
+      <!-- 社交链接背景的变形虫形状SVG -->
+      <svg class="my-footer-social-amoeba-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 236 54">
+        <path class="my-footer-social-amoeba-path" d="M223.06,43.32c-.77-7.2,1.87-28.47-20-32.53C187.78,8,180.41,18,178.32,20.7s-5.63,10.1-4.07,16.7-.13,15.23-4.06,15.91-8.75-2.9-6.89-7S167.41,36,167.15,33a18.93,18.93,0,0,0-2.64-8.53c-3.44-5.5-8-11.19-19.12-11.19a21.64,21.64,0,0,0-18.31,9.18c-2.08,2.7-5.66,9.6-4.07,16.69s.64,14.32-6.11,13.9S108.35,46.5,112,36.54s-1.89-21.24-4-23.94S96.34,0,85.23,0,57.46,8.84,56.49,24.56s6.92,20.79,7,24.59c.07,2.75-6.43,4.16-12.92,2.38s-4-10.75-3.46-12.38c1.85-6.6-2-14-4.08-16.69a21.62,21.62,0,0,0-18.3-9.18C13.62,13.28,9.06,19,5.62,24.47A18.81,18.81,0,0,0,3,33a21.85,21.85,0,0,0,1.58,9.08,16.58,16.58,0,0,1,1.06,5A6.75,6.75,0,0,1,0,54H236C235.47,54,223.83,50.52,223.06,43.32Z"></path>
+      </svg>
+
+      <!-- GitHub社交链接 -->
+      <a class="my-footer-social-link github" href="https://github.com/Kuzumi1202" target="_blank" rel="external nofollow noopener noreferrer">
+        <span class="hidden-link-text">Github</span>
+        <!-- Iconfont图标 -->
+        <i class="iconfont icon-github-fill"></i>
+      </a>
+
+      <!-- 邮箱链接 -->
+      <a class="my-footer-social-link email" href="mailto:Kuzumi1202@163.com" target="_blank" rel="external nofollow noopener noreferrer">
+        <span class="hidden-link-text">Email</span>
+        <!-- Iconfont图标 -->
+        <i class="iconfont icon-youxiang"></i>
+      </a>
+
+      <!-- 微博社交链接 -->
+      <a class="my-footer-social-link weibo" href="https://weibo.com/u/3777761640" target="_blank" rel="external nofollow noopener noreferrer">
+        <span class="hidden-link-text">Weibo</span>
+        <!-- Iconfont图标 -->
+        <i class="iconfont icon-xinlangweibo"></i>
+      </a>
+
+      <!-- 哔哩哔哩链接 -->
+      <a class="my-footer-social-link bilibili" href="https://space.bilibili.com/71240967" target="_blank" rel="external nofollow noopener noreferrer">
+        <span class="hidden-link-text">Bilibili</span>
+        <!-- Iconfont图标 -->
+        <i class="iconfont icon-bilibili"></i>
+      </a>
+    </div>
+</div>
+</div>
+
+<!-- 页脚版权信-->
+<div class="my-footer-copyright">
+  <div class="my-footer-copyright-wrapper">
+    <p class="my-footer-copyright-text">
+      ©2025 | Designed By: 陈清规_ Kuzumi. | Per Aspera Ad Astra.
+    </p>
+  </div>
+</div>
+</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async src="/js/diytitle.js"></script><script async src="/js/grayscale.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="输入关键词…" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(/img/Posts/Cover_Image.jpg);"> <a class="categoryBar-list-link" href="categories/计院八股文/">计院八股文</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">每个计院学生都要挨得揍</span></li><li class="categoryBar-list-item" style="background:url(/img/Posts/Cover_Image.jpg);"> <a class="categoryBar-list-link" href="categories/日常碎碎念/">日常碎碎念</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">逃避不是解决之道</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/游戏开发/">游戏开发</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><script data-pjax>
+  function butterfly_swiper_injector_config(){
+    var parent_div_git = document.getElementById('recent-posts');
+    var item_html = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms;"><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/ded75e1a/" alt=""><img width="48" height="48" src="/img/Posts/Cover_Image.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-10-10</span><a class="blog-slider__title" href="posts/ded75e1a/" alt="">面试考点_计网基础</a><div class="blog-slider__text">计算机网络，来握手挥手！</div><a class="blog-slider__button" href="posts/ded75e1a/" alt="">详情   </a></div></div><div class="blog-slider__item swiper-slide" style="width: 750px; opacity: 1; transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;"><a class="blog-slider__img" href="posts/ca1b96bb/" alt=""><img width="48" height="48" src="/img/Posts/Cover_Image.jpg" alt="" onerror="this.src=https://unpkg.zhimg.com/akilar-candyassets/image/loading.gif; this.onerror = null;"/></a><div class="blog-slider__content"><span class="blog-slider__code">2025-10-08</span><a class="blog-slider__title" href="posts/ca1b96bb/" alt="">面试考点_C#基础</a><div class="blog-slider__text">Unity游戏开发语言基础</div><a class="blog-slider__button" href="posts/ca1b96bb/" alt="">详情   </a></div></div></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载butterfly_swiper')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = 'undefined'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_swiper_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_swiper_injector_config();
+  }
+  </script><script defer src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper.min.js"></script><script defer data-pjax src="https://npm.elemecdn.com/hexo-butterfly-swiper/lib/swiper_init.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>

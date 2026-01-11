@@ -1,0 +1,423 @@
+
+/* 页脚容器样式 - 设置透明背景和基础文本颜色 */
+#footer {
+    background-color: rgba(0, 0, 0, 0); /* 修改透明色 */
+    color: #fff;
+    padding: 0;
+}
+
+/* 页脚其他内容区域 - 移除内边距 */
+#footer .footer-other {
+    padding: 0;
+}
+
+/* 版权信息区域 - 移除内边距 */
+.footer-copyright{
+    padding: 0;
+}
+
+/* 页脚logo文字颜色 */
+.my-footer-logo {
+    color: white;
+}
+
+/* 波浪形SVG装饰元素样式 - 设置尺寸和翻转效果 */
+.my-footer-wave-svg {
+    height: 50px;
+    width: 100%;
+    transform: scale(-1, -1) translateY(-10px); /*;*/
+}
+
+/* 波浪形SVG路径填充颜色 */
+.my-footer-wave-path {
+    fill: #520e09;
+}
+
+/* 页脚主要内容容器 - 设置居中布局和定位 */
+.my-footer-content {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1230px;
+    padding: 40px 15px 450px;
+    position: relative;
+}
+
+/* 页脚内容列 - 设置浮动布局和基础样式 */
+.my-footer-content-column {
+    box-sizing: border-box;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    color: #fff;
+}
+
+/* 内容列中链接样式 */
+.my-footer-content-column ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* logo链接显示为行内块元素 */
+.my-footer-logo-link {
+    display: inline-block;
+}
+
+/* 页脚菜单上边距 */
+.my-footer-menu {
+    margin-top: 15px;
+}
+
+/* 菜单标题样式 - 设置字体和间距 */
+.my-footer-menu-name {
+    color: #fffff2;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    line-height: 18px;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+/* 菜单列表样式 - 移除默认列表样式 */
+.my-footer-menu-list {
+    list-style: none;
+    margin-bottom: 0;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+/* 菜单列表项上边距 */
+.my-footer-menu-list li {
+    margin-top: 5px;
+}
+
+/* 行动号召描述文字样式 */
+.my-footer-call-to-action-description {
+    color: #fffff2;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* 行动号召按钮悬停效果 */
+.my-footer-call-to-action-button:hover {
+    background-color: #fffff2;
+    color: #38010a;
+}
+
+/* 最后一个按钮的右边距处理 */
+.button:last-of-type {
+    margin-right: 0;
+}
+
+/* 行动号召按钮基础样式 */
+.my-footer-call-to-action-button {
+    background-color: #38010a;
+    border-radius: 21px;
+    color: #fffff2;
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    line-height: 18px;
+    padding: 12px 30px;
+    margin: 0 10px 10px 0;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color .2s;
+    cursor: pointer;
+    position: relative;
+}
+
+/* 行动号召区域上边距 */
+.my-footer-call-to-action {
+    margin-top: 17px;
+}
+
+/* 行动号召标题样式 */
+.my-footer-call-to-action-title {
+    color: #fffff2;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .1em;
+    line-height: 18px;
+    margin-bottom: 0;
+    margin-top: 0;
+    text-transform: uppercase;
+}
+
+/* 行动号召链接包装器样式 */
+.my-footer-call-to-action-link-wrapper {
+    margin-bottom: 0;
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 行动号召链接样式 */
+.my-footer-call-to-action-link-wrapper a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 社交媒体链接容器 - 绝对定位在右下角 */
+.my-footer-social-links {
+    bottom: -1px;
+    height: 54px;
+    position: absolute;
+    right: 0;
+    width: 236px;
+}
+
+/* 社交媒体背景SVG样式 */
+.my-footer-social-amoeba-svg {
+    height: 54px;
+    left: 0;
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 236px;
+}
+
+/* 社交媒体背景路径填充色 */
+.my-footer-social-amoeba-path {
+    fill: #300000;
+}
+
+/* 电子邮件社交链接定位 */
+.my-footer-social-link.email {
+    height: 41px;
+    left: 5px;
+    top: 14px;
+    width: 41px;
+}
+
+/* 社交链接通用样式 */
+.my-footer-social-link {
+    display: block;
+    padding: 10px;
+    position: absolute;
+}
+
+/* 隐藏链接文本 - 用于无障碍访问 */
+.hidden-link-text {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    -webkit-clip-path: inset(0px 0px 99.9% 99.9%);
+    clip-path: inset(0px 0px 99.9% 99.9%);
+    overflow: hidden;
+    height: 1px;
+    width: 1px;
+    padding: 0;
+    border: 0;
+    top: 50%;
+}
+
+/* Iconfont图标基础样式 */
+.my-footer-social-link .iconfont {
+    display: block;
+    font-size: 24px; /* 控制图标大小 */
+    color: #fffff2; /* 控制图标颜色 */
+    text-align: center;
+    line-height: 1;
+    transition: color .2s; /* 保留过渡效果 */
+    /* 确保图标在容器中垂直水平居中 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 微博社交链接定位 */
+.my-footer-social-link.weibo {
+    height: 42px;
+    left: 124px;
+    top: 13px;
+    width: 42px;
+}
+
+/* 哔哩哔哩链接定位 */
+.my-footer-social-link.bilibili {
+    height: 43px;
+    left: 178px;
+    top: 10px;
+    width: 43px;
+}
+
+/* GitHub社交链接定位 */
+.my-footer-social-link.github {
+    height: 62px;
+    left: 54px;
+    top: -4px;
+    width: 62px;
+}
+
+/* 为GitHub图标调整单独大小（因其容器较大） */
+.my-footer-social-link.github .iconfont {
+    font-size: 32px; /* GitHub图标可以稍大一些 */
+}
+
+/* 版权信息区域样式 */
+.my-footer-copyright {
+    background-color: #300000;
+    color: #fff;
+    padding: 15px 30px;
+    text-align: center;
+}
+
+/* 版权信息包装器 - 设置居中 */
+.my-footer-copyright-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
+
+/* 版权文本样式 */
+.my-footer-copyright-text {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/* 版权链接样式 */
+.my-footer-copyright-link {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* 页脚内容区域背景色 */
+.my-footer-content-div {
+    background: #cd2417
+}
+
+/* SVG容器最大高度限制 */
+.my-footer-svg-div {
+    width: 100%;
+    max-height: 200px;
+}
+
+/* 添加各图标悬停颜色 */
+.my-footer-social-link.github:hover .iconfont {
+    color: #333; /* GitHub 深灰 */
+}
+
+.my-footer-social-link.email:hover .iconfont {
+    color: #ea4335; /* Gmail 红 */
+}
+
+.my-footer-social-link.weibo:hover .iconfont {
+    color: #ea4335; /* 微博红 */
+}
+
+.my-footer-social-link.bilibili:hover .iconfont {
+    color: #fb7299; /* 哔哩哔哩粉 */
+}
+
+/* 媒体查询 - 针对不同屏幕尺寸的响应式设计 */
+
+/* 小屏幕手机 (320px-479px) */
+@media (min-width: 320px) and (max-width: 479px) {
+    /* 调整内容区域内边距 */
+    .my-footer-content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1230px;
+        padding: 40px 15px 649px;
+        position: relative;
+    }
+
+    /* 在小屏幕上隐藏logo */
+    .my-footer-logo {
+        display: none;
+    }
+    
+    /* 【响应式调整】小屏幕调整图标大小 */
+    .my-footer-social-link .iconfont {
+        font-size: 20px;
+    }
+    .my-footer-social-link.github .iconfont {
+        font-size: 26px;
+    }
+}
+
+/* 中等屏幕手机 (480px-599px) */
+@media (min-width: 480px) and (max-width: 599px) {
+    /* 调整内容区域内边距 */
+    .my-footer-content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1230px;
+        padding: 40px 15px 738px;
+        position: relative;
+    }
+
+    /* 为logo添加左右内边距实现偏移效果 */
+    .my-footer-logo {
+        padding-left: 177px; /* Qlogo 稍微偏移一点 */
+        padding-right: 170px;
+    }
+}
+
+/* 平板竖屏和小横屏 (600px-800px) */
+@media (min-width: 600px) and (max-width: 800px) {
+    /* 调整内容区域内边距 */
+    .my-footer-content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1230px;
+        padding: 40px 15px 758px;
+        position: relative;
+    }
+}
+
+/* 平板横屏和低分辨率桌面 (801px及以上) */
+@media (min-width: 801px) {
+    /* 可以在此添加大屏幕样式 */
+}
+
+/* 大屏平板、笔记本和桌面 (1025px及以上) */
+@media (min-width: 1025px) {
+    /* 可以在此添加更大屏幕样式 */
+}
+
+/* 高分辨率设备 (1281px及以上) */
+@media (min-width: 1281px) {
+    /* 可以在此添加高分辨率屏幕样式 */
+}
+
+/* 中等屏幕以上 (760px及以上) */
+@media (min-width: 760px) {
+    /* 调整内容区域内边距 */
+    .my-footer-content {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1230px;
+        padding: 10px 15px 237px;
+        position: relative;
+    }
+
+    /* 设置内容列为4列布局（每列约25%宽度） */
+    .my-footer-content-column {
+        /*五列的话 19.99 %*/
+        width: 24.99%;
+    }
+}
+
+/* 小屏幕以上 (568px及以上) */
+@media (min-width: 568px) {
+    /* 可以在此添加小屏幕以上样式 */
+}
+
+/* 中等屏幕但小于760px (600px-760px) */
+@media (min-width: 600px) and (max-width: 760px) {
+    /* 为logo添加左右内边距实现偏移效果 */
+    .my-footer-logo {
+        padding-left: 212px; /* Qlogo 稍微偏移一点 */
+        padding-right: 204px;
+    }
+}

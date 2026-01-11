@@ -1,0 +1,129 @@
+/* personal-profile.css - 黑红主题适配版 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 公告专属容器 */
+.announcement-profile {
+  text-align: center;
+  line-height: 2;
+  font-size: 16px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem 0;
+  color: #e0e0e0; /* 基础文字色：浅灰，适配黑色背景 */
+}
+/* 标题样式*/
+.title {
+  font-size: 17px;
+  font-weight: 700; /* 增强粗体强调 */
+  color: #f44336; /* 主红色：亮红不刺眼 */
+  margin-bottom: 0.3rem;
+}
+/* 兴趣标签样式 */
+.hobby {
+  font-size: 17px;
+  color: #f8f8f8; 
+  display: inline-block;
+  padding: 0.25rem 1.1rem; 
+  border: 1px solid;
+  border-image: linear-gradient(135deg, #f44336, #881a1a) 1; 
+  border-radius: 20px; 
+  background: radial-gradient(circle at center, #231212 0%, #120a0a 100%); 
+  margin: 0.3rem 0.4rem; 
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* 更丝滑的过渡曲线，契合科技动效 */
+  box-shadow: 0 0 6px rgba(244, 67, 54, 0.2), inset 0 0 3px rgba(244, 67, 54, 0.15); 
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.1); 
+  font-weight: 500; 
+}
+
+.hobby:hover {
+  background: radial-gradient(circle at center, #2d1414 0%, #1a0d0d 100%); 
+  border-image: linear-gradient(135deg, #ff5252, #f44336) 1; 
+  box-shadow: 0 0 12px rgba(244, 67, 54, 0.4), inset 0 0 5px rgba(244, 67, 54, 0.3); 
+  transform: translateY(-2px); 
+  color: #ffffff; 
+}
+
+/* 署名样式*/
+.signature {
+  font-size: 17px; /* 增大字体 */
+  color: #ff4444; /* 醒目红色，突出强调 */
+  font-weight: 700; /* 加粗强调 */
+  letter-spacing: 2px; /* 增加字间距 */
+  margin-top: 0.5rem; /* 增加上间距*/
+  text-shadow: 0 0 6px rgba(255, 68, 68, 0.3); 
+}
+/* 寄语样式 */
+.wish {
+  font-size: 17px;
+  color: #ff0000; 
+  font-weight: 700; 
+  margin-top: 0.3rem;
+  text-shadow: 0 0 8px rgba(244, 67, 54, 0.2); 
+}
+/* 分隔线样式*/
+.divider {
+  margin: 1rem 0;
+  border: none;
+  border-top: 1px solid #333; 
+  position: relative;
+}
+.divider::after {
+  content: "•";
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: inherit; 
+  color: #882222; 
+  padding: 0 6px;
+  font-size: 12px;
+}
+/* 响应式适配移动端公告 */
+@media (max-width: 480px) {
+  .announcement-profile {
+    font-size: 14px;
+    padding: 0.8rem 0;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .wish {
+    font-size: 15px;
+    text-shadow: 0 0 6px rgba(244, 67, 54, 0.2);
+  }
+  .signature {
+    font-size: 15px; /* 移动端适配字体大小 */
+    letter-spacing: 1.5px;
+  }
+  .divider {
+    margin: 0.8rem 0;
+  }
+  .hobby {
+    padding: 0.15rem 0.8rem;
+    font-size: 14px;
+  }
+}
+
+/* 黑暗模式兼容*/
+@media (prefers-color-scheme: dark) {
+  .announcement-profile {
+    color: #dcdcdc;
+  }
+  .hobby {
+    background-color: #1a1a1a;
+    border-color: #501818;
+  }
+  .wish {
+    color: #ff6b6b;
+  }
+  .signature {
+    color: #ff5555; /* 黑暗模式下署名颜色优化 */
+    text-shadow: 0 0 6px rgba(255, 85, 85, 0.3);
+  }
+  .divider::after {
+    color: #702828;
+  }
+}

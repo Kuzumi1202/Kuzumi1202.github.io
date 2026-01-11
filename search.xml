@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>2026年01月11日</title>
+      <link href="/posts/7827ab9a/"/>
+      <url>/posts/7827ab9a/</url>
+      
+        <content type="html"><![CDATA[<h1 id="关于面试"><a href="#关于面试" class="headerlink" title="关于面试"></a>关于面试</h1><p>最近面试一直在被教做人，一看对面薪资开 2k。真的是快气笑了。<br>一看岗位要求只要会编程语言和引擎基础就可以，一面试恨不得我现场手搓一个项目出来。</p><h1 id="关于日常"><a href="#关于日常" class="headerlink" title="关于日常"></a>关于日常</h1><h2 id="压力"><a href="#压力" class="headerlink" title="压力"></a>压力</h2><p>回家就是被压力找工作，每天吃饭都不想跟家里人说话，生怕开口就被问工作找到了没，面试咋样了……<br>开玩笑的，其实不开口也会被问，真是没招了。<br>毕业设计也是一个字都没动，感觉自己活得浑浑噩噩的。</p><h2 id="想念"><a href="#想念" class="headerlink" title="想念"></a>想念</h2><p>想回到 2025 年 12 月 31 日了……<strong>我想莅临飞</strong>……<br>活着好命苦啊！！！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日常碎碎念 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日常生活 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>面试考点_计组基础</title>
+      <link href="/posts/2d5ee4f4/"/>
+      <url>/posts/2d5ee4f4/</url>
+      
+        <content type="html"><![CDATA[<h1 id="计算机硬件结构"><a href="#计算机硬件结构" class="headerlink" title="计算机硬件结构"></a>计算机硬件结构</h1><ul><li>运算器：实现对数据的算术和逻辑运算</li><li>控制器：运算结果和源操作数的存放区</li><li>存储器<ul><li>内部存储器：容量小、速度快、存放临时数据</li><li>外部存储器：速度慢、长期存储</li></ul></li><li>输入设备</li><li>输出设备</li></ul><h2 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h2><p>功能：实现程序控制、操作控制、时间控制、数据处理功能</p><ul><li>运算器</li><li>控制器</li><li>寄存器</li><li>内部总线</li></ul><h2 id="运算器"><a href="#运算器" class="headerlink" title="运算器"></a>运算器</h2><p>功能：执行所有的算术运算；执行所有的逻辑运算并进行逻辑测试</p><ul><li>算术逻辑单元 ALU：实现对数据的算术和逻辑运算</li><li>累加器 AC：运算结果或操作数存放区</li><li>数据缓冲寄存器 DR：暂时存放内存的指令或数据</li><li>状态条件寄存器 PSW：保存指令运行结果的条件码内容，如溢出标志等</li></ul><h2 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h2><p>功能：控制整个 CPU 工作，包括程序控制、时序控制等</p><ul><li>指令寄存器 IR：暂存 CPU 正在执行的指令</li><li>程序计数器 PC：存放指令执行地址</li><li>地址寄存器 AR：保存当前 CPU 访问的内存地址</li><li>指令译码器 ID：分析指令操作码</li></ul><h1 id="指令和运算"><a href="#指令和运算" class="headerlink" title="指令和运算"></a>指令和运算</h1><h2 id="计算机指令"><a href="#计算机指令" class="headerlink" title="计算机指令"></a>计算机指令</h2><p>组成：指令 = 操作码 + 操作数<br>操作码决定要完成的操作；操作数指参与运算的数据及其所在单元地址。<br>操作要求和操作数地址都有二进制数码表示，分别成为操作码和地址码。<br>整个指令都以二进制编码的形式存放在存储器中。</p><h2 id="计算机指令执行过程"><a href="#计算机指令执行过程" class="headerlink" title="计算机指令执行过程"></a>计算机指令执行过程</h2><ol><li>取指令：将 PC 中的指令地址取出，送入地址总线，CPU 根据指令地址曲内存中取出指令内容存入 IR。</li><li>分析指令：ID 进行分析，分析指令操作码。</li><li>执行指令：取出指令执行所需的源操作数。</li></ol><h2 id="指令集"><a href="#指令集" class="headerlink" title="指令集"></a>指令集</h2><pre><code>程序经过编译、连接、变成汇编指令形成指令集；不同芯片对应不同指令集。</code></pre><p>常见指令集：</p><ul><li>算术指令集</li><li>数据传输类指令</li><li>逻辑类指令</li><li>条件分支类指令</li><li>无条件跳转指令</li></ul><h2 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h2><h3 id="指令寻址方式"><a href="#指令寻址方式" class="headerlink" title="指令寻址方式"></a>指令寻址方式</h3><ul><li>顺序寻址方式：当执行一段程序时，是一条指令接着一条指令执行的。</li><li>跳跃寻址方式：下一条指令地址码不是由程序计数器给出，而是由本条指令直接给出，程序跳跃后，按新的指令地址开始顺序执行。因此程序计数器的内容也必须相对应改变，以便及时更新新的指令地址。</li></ul><h3 id="指令操作数寻址方式"><a href="#指令操作数寻址方式" class="headerlink" title="指令操作数寻址方式"></a>指令操作数寻址方式</h3><ul><li>立即寻址方式：指令的地址码指出的不是地址，而是操作数本身。</li><li>直接寻址方式：在指令的地址字段中指出操作数在主存中的地址。</li><li>间接寻址方式：指令地址码字段所指向的存储单元中存储的是操作数的地址。</li><li>寄存器寻址方式：指令中地址码时寄存器编号。</li></ul><h2 id="指令系统"><a href="#指令系统" class="headerlink" title="指令系统"></a>指令系统</h2><div class="table-container"><table><thead><tr><th>指令系统类型</th><th>指令特征</th><th>寻址方式</th><th>实现方式</th><th>其他</th></tr></thead><tbody><tr><td>CISC</td><td>数量多，使用频率差别大，可变长格式，兼容性强</td><td>支持多种</td><td>微程序控制技术</td><td>研制周期长</td></tr><tr><td>RISC</td><td>数量少，使用频率接近，定长格式；大部分为单周期指令，操作寄存器，只有 Load/Store 操作内存</td><td>支持方式少</td><td>增加了通用寄存器，硬布线逻辑控制为主，适合采用流水线</td><td>优化编译，有效支持高级语言</td></tr></tbody></table></div><ul><li>CISC(复杂指令集计算集)：以 Intel 和 AMD 的 X86 CPU 为代表，通过告诉执行多个精简指令来提高整个微机的性能。</li><li>RISC(精简指令集计算集)：以 ARM 为代表，通过用尽量可能少的指令来执行各种过程提高微机的性能。</li></ul><h2 id="指令流水线"><a href="#指令流水线" class="headerlink" title="指令流水线"></a>指令流水线</h2><p>原理：将指令分成不同段，每一段由不同的部分去处理，因此可以产生叠加的效果，所有的部件处理指令的不同段。</p><h3 id="指令流水线示意图"><a href="#指令流水线示意图" class="headerlink" title="指令流水线示意图"></a>指令流水线示意图</h3><div class="table-container"><table><thead><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead><tbody><tr><td></td><td></td><td>取指 k+2</td><td>分析 k+2</td><td>执行 k+2</td></tr><tr><td></td><td>取指 k+1</td><td>分析 k+1</td><td>执行 k+1</td><td></td></tr><tr><td>取指 k</td><td>分析 k</td><td>执行 k</td><td></td></tr></tbody></table></div><h3 id="流水线计算"><a href="#流水线计算" class="headerlink" title="流水线计算"></a>流水线计算</h3><ul><li>流水线周期：指令分为不同执行阶段，其中执行时间最长的段为流水线周期。</li><li>流水线执行时间：1 条指令总执行时间 + (总指令条数-1) * 流水线周期</li><li>流水线加速比：不使用流水线总执行时间 / 使用流水线总执行时间</li></ul><h3 id="超标量流水线技术"><a href="#超标量流水线技术" class="headerlink" title="超标量流水线技术"></a>超标量流水线技术</h3><pre><code>常规流水线是度为1的，即每个流水线只执行一个部分，当度&gt;1时，就是超标量流水线技术。</code></pre><p>指令条数 = 指令条数 / 度 ；而后套用流水线执行时间的公式。</p><h1 id="处理器运行原理"><a href="#处理器运行原理" class="headerlink" title="处理器运行原理"></a>处理器运行原理</h1><pre><code>控制器从内存中取指令，解析指令，然后交给运算器运算执行，最后保存到内存。</code></pre><h1 id="计算机架构"><a href="#计算机架构" class="headerlink" title="计算机架构"></a>计算机架构</h1><h2 id="冯诺依曼架构"><a href="#冯诺依曼架构" class="headerlink" title="冯诺依曼架构"></a>冯诺依曼架构</h2><pre><code>指令存储器和数据存储器合并在一起。</code></pre><ul><li>常用于 PC 处理器；</li><li>指令和数据存储在一起；</li><li>指令和数据通过相同的总线传输，2 条总线，数据总线和地址总线；</li></ul><h2 id="哈佛架构"><a href="#哈佛架构" class="headerlink" title="哈佛架构"></a>哈佛架构</h2><pre><code>程序指令和数据分开存储在两个独立的存储空间中，每个存储器都有独立编址、独立访问、是一种并行体系结构</code></pre><ul><li>常用于嵌入式系统处理器；</li><li>指令和数据分开存储，可同时并行读取，吞吐量高；</li><li>指令和数据通过不同的总线传输，4 条总线，2 条数据总线和 2 条地址总线；</li></ul><h1 id="CPU-运行逻辑"><a href="#CPU-运行逻辑" class="headerlink" title="CPU 运行逻辑"></a>CPU 运行逻辑</h1><pre><code>CPU(中央处理器)是计算机的核心部件，负责执行程序指令和处理数据。</code></pre><ol><li>指令的提取(Fetch)<ul><li>CPU 从存储器中取出下一条要执行的指令，并将其放入指令寄存器中。</li><li>通过 PC 实现的，PC 中存储了当前指令的地址，每次执行完一条指令后，PC 的值会自动更新为下一条指令的地址</li></ul></li><li>指令的解码(Decode)<ul><li>CPU 对指令寄存器中的指令进行译码，解析出指令类型、操作码和操作数等信息。</li><li>解码后，CPU 将操作数送到控制单元，操作数则送到 ALU 或寄存器中准备执行。</li></ul></li><li>指令的执行(Execute)<ul><li>在控制单元的协调下，CPU 的运算单元(ALU)对操作数进行算术运算或逻辑运算。</li><li>执行过程中，可能需要从内存中读取数据或向内存写入结果。</li></ul></li><li>结果的写回(Writeback)<ul><li>执行完指令后，运算单元将结果写回寄存器或内存中。</li><li>如果指令涉及条件跳转或循环等操作，控制单元会根据指令的执行结果更新程序计数器的值，以指向下一条要执行的指令。</li></ul></li></ol><h2 id="缓存机制"><a href="#缓存机制" class="headerlink" title="缓存机制"></a>缓存机制</h2><pre><code>缓存用于暂时存储CPU频繁访问的数据和指令，</code></pre><ul><li>现代 CPU 为了提高运行效率，通常引入了缓存(Cache)机制。</li><li>缓存分为：一级缓存(L1 Cache)、二级缓存(L2 Cache)等。</li><li>CPU 执行指令时，优先从缓存中查找数据和指令，以减少对内存的访问次数，从而提高运行效率。</li></ul><h2 id="多核和超线程技术"><a href="#多核和超线程技术" class="headerlink" title="多核和超线程技术"></a>多核和超线程技术</h2><ul><li>现代 CPU 多采用多核设计，每个核心可以独立执行指令。</li><li>一些 CPUCPU 还支持超线程技术(Hyper-Threading)，通过模拟多个逻辑 CPU 来同时执行多个线程，进一步提高 CPU 的并行处理能力。</li></ul><h2 id="总线和接口"><a href="#总线和接口" class="headerlink" title="总线和接口"></a>总线和接口</h2><ul><li>CPU 通过总线、内存、I/O 设备等进行通信。</li><li>总线分为<ul><li>地址总线：传输地址信息</li><li>数据总线：传输数据信息</li><li>控制总线：传输控制信息</li></ul></li><li>CPU 与外设之间的通信通过接口电路来实现。</li></ul><h1 id="存储器的层次结构"><a href="#存储器的层次结构" class="headerlink" title="存储器的层次结构"></a>存储器的层次结构</h1><blockquote><p>全部集成在现在 CPU 内部</p><blockquote><p>寄存器 Regs<br>L1 Cache |<br>L2 Cache |&gt;&gt; CPU Cache 采用 SRAM 芯片<br>L3 Cache |<br>Memory &gt;&gt; 内存采用 DRAM 芯片<br>SSD |<br>HDD |&gt;&gt;硬盘</p></blockquote></blockquote><p>从内存读取高速缓存的数据是一小块一小块的，而不是按照单个数组元素来读取的。<br><strong>CacheLine</strong>(缓存块)：一小块一小块的高速缓存数据；PC 上这个块大小是 64 字节。</p><h1 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h1><pre><code>采用分级存储目的：解决存储容量、成本和速度之间的矛盾问题</code></pre><blockquote><p>两级存储</p><blockquote><p>Cache - 主存<br>主存 - 辅存(虚拟存储体系)</p></blockquote></blockquote><h2 id="局部性原理"><a href="#局部性原理" class="headerlink" title="局部性原理"></a>局部性原理</h2><ul><li>局部性原理：CPU 运行时，所访问的数据会趋向于一个较小的局部空间地址内<ul><li>时间局部性原理：如果一个数据项正在被访问，那么它近期很可能·被再次访问，即在相邻的时间里会访问同一个数据项。</li><li>空间局部性原理：在最近的将来会用到的数据的地址和现在正在访问的数据地址可能是相近的，即相邻的空间地址会被连续访问。</li></ul></li></ul><h3 id="高速缓存-Cache"><a href="#高速缓存-Cache" class="headerlink" title="高速缓存 Cache"></a>高速缓存 Cache</h3><p>地址映射：在 CPU 工作时，送出的时主存单元地址，而应从 Cache 存储器中读/写信息。这就需要将主存地址转换为 Cache 存储器地址，这种转换称之为<strong>地址映射</strong>，由硬件自动完成映射。</p><ol><li>直接映射：Cache 和主存等分成块并编号，两个的对应关系是固定的，二者块号相同时才能命中。地址变换简单，但不灵活，易造成格源浪费。</li><li>全相联映射：Cache 和主存等分成块并编号，主存中任意一块和 Cache 中任意一块对应。因此可以随意调入 Cache 任意位置，但地址变换复杂，速度较慢。<strong>最不易发生块冲突</strong>的映射方式。</li><li>组组相联映射：Cache 和主存先分块在分组，组间采用直接映射，组内采用全相联映射。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计院八股文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> 计算机组成原理 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>面试考点_热更新机制</title>
+      <link href="/posts/cb93a20b/"/>
+      <url>/posts/cb93a20b/</url>
+      
+        <content type="html"><![CDATA[<h1 id="热更新框架"><a href="#热更新框架" class="headerlink" title="热更新框架"></a>热更新框架</h1><h2 id="Assets"><a href="#Assets" class="headerlink" title="Assets"></a>Assets</h2><h3 id="需要打-Bundle"><a href="#需要打-Bundle" class="headerlink" title="需要打 Bundle"></a>需要打 Bundle</h3><ul><li>Lua</li><li>UI<ul><li>预制体</li><li>图片</li></ul></li><li>模型<ul><li>预制体</li><li>动作</li><li>贴图</li><li>材质</li></ul></li><li>特效<ul><li>预制体</li><li>贴图</li><li>材质</li></ul></li><li>声音<ul><li>音效</li><li>音乐</li></ul></li><li>动画</li></ul><h3 id="不需要打-Bundle"><a href="#不需要打-Bundle" class="headerlink" title="不需要打 Bundle"></a>不需要打 Bundle</h3><ul><li>xlua</li><li>C#</li><li>工具<ul><li>Bundle 构建工具</li><li>其他工具</li></ul></li></ul><h2 id="与-Lua-交互"><a href="#与-Lua-交互" class="headerlink" title="与 Lua 交互"></a>与 Lua 交互</h2><h3 id="C-调用-Lua"><a href="#C-调用-Lua" class="headerlink" title="C#调用 Lua"></a>C#调用 Lua</h3><ul><li>加载 Lua 脚本</li><li>执行 Lua 逻辑</li></ul><h3 id="Lua-调用-C"><a href="#Lua-调用-C" class="headerlink" title="Lua 调用 C"></a>Lua 调用 C</h3><ul><li>C#给 Lua 提供的接口<ul><li>资源加载</li><li>资源管理</li><li>时间管理</li><li>场景加载</li><li>声音加载</li><li>模型加载</li><li>UI 管理</li></ul></li></ul><h1 id="热更新方案"><a href="#热更新方案" class="headerlink" title="热更新方案"></a>热更新方案</h1><h2 id="整包"><a href="#整包" class="headerlink" title="整包"></a>整包</h2><ul><li>策略：框架+整包资源</li><li>优点：首次更新少</li><li>缺点：安装包下载时间长，首次安装久</li></ul><h2 id="分包-海外市场用的多"><a href="#分包-海外市场用的多" class="headerlink" title="分包 -海外市场用的多"></a>分包 -海外市场用的多</h2><ul><li>策略：框架</li><li>优点：安装包小，下载快，安装极速</li><li>缺点：首次更新时间久</li></ul><h1 id="资源更新"><a href="#资源更新" class="headerlink" title="资源更新"></a>资源更新</h1><h2 id="整包-1"><a href="#整包-1" class="headerlink" title="整包"></a>整包</h2><ul><li>C#启动</li><li>检查是否初次安装<ul><li>Y：释放包内资源<ul><li>streamingAssets 只读目录 -&gt; persistenDataPath 可读写目录</li></ul></li></ul></li><li>检查版本文件（是否需要更新）<ul><li>Y：下载补丁</li></ul></li><li>读取文件列表</li><li>加载 Bundle</li><li>启动 Lua</li></ul><h2 id="分包"><a href="#分包" class="headerlink" title="分包"></a>分包</h2><ul><li>C#启动</li><li>检查版本文件（是否需要更新）<ul><li>Y：下载补丁</li></ul></li><li>读取文件列表</li><li>加载 Bundle</li><li>启动 Lua</li></ul><h1 id="热更新代码"><a href="#热更新代码" class="headerlink" title="热更新代码"></a>热更新代码</h1><h2 id="代码流程"><a href="#代码流程" class="headerlink" title="代码流程"></a>代码流程</h2><h3 id="检查初次安装"><a href="#检查初次安装" class="headerlink" title="检查初次安装"></a>检查初次安装</h3><ul><li>只读目录只有热更资源</li><li>可读写目录没有热更资源</li><li>只需要判断 filelist 文件是否存在<ul><li>即最后写入 filelist</li></ul></li></ul><h3 id="检查更新"><a href="#检查更新" class="headerlink" title="检查更新"></a>检查更新</h3><ul><li>比较本地的 filelist 和服务器上的 filelist</li></ul><h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><ul><li>PathUtil.cs：定义只读和可读写目录</li><li>AppConst.cs:：热更新资源地址</li><li>HotUpdate.cs：<ul><li>协程 DownLoadFile()<ul><li>下载一个文件</li><li>下载多个文件</li></ul></li><li>DownFileInfo()</li></ul></li></ul><h3 id="写入文件"><a href="#写入文件" class="headerlink" title="写入文件"></a>写入文件</h3><ul><li>FileUtil.cs(类)<ul><li>IsExists()</li><li>WriteFile()</li></ul></li></ul><h3 id="解析-filelist"><a href="#解析-filelist" class="headerlink" title="解析 filelist"></a>解析 filelist</h3><ul><li>HotUpdate.cs<ul><li>GetFileList()</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> XLua </tag>
+            
+            <tag> 热更新 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>面试考点_Unity基础</title>
+      <link href="/posts/2f5b963f/"/>
+      <url>/posts/2f5b963f/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Unity-基础"><a href="#Unity-基础" class="headerlink" title="Unity 基础"></a>Unity 基础</h1><h2 id="MonoBehaviour（生命周期）"><a href="#MonoBehaviour（生命周期）" class="headerlink" title="MonoBehaviour（生命周期）"></a>MonoBehaviour（生命周期）</h2><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>MonoBehaviour 是 Unity 中所有脚本的基类，提供了一系列在特定时间自动调用的生命周期方法。</p><h2 id="完整生命周期表格"><a href="#完整生命周期表格" class="headerlink" title="完整生命周期表格"></a>完整生命周期表格</h2><div class="table-container"><table><thead><tr><th>阶段</th><th>方法</th><th>调用时机</th><th>用途说明</th><th>执行频率</th></tr></thead><tbody><tr><td><strong>初始化阶段</strong></td><td><code>Awake()</code></td><td>脚本实例被创建时立即调用</td><td>初始化变量、获取组件引用</td><td>仅一次</td></tr><tr><td></td><td><code>OnEnable()</code></td><td>脚本组件启用时调用</td><td>注册事件、启动协程</td><td>每次启用时</td></tr><tr><td></td><td><code>Start()</code></td><td>在所有 <code>Awake()</code> 调用后，第一次 Update 前</td><td>初始化依赖其他对象的内容</td><td>仅一次</td></tr><tr><td><strong>物理更新阶段</strong></td><td><code>FixedUpdate()</code></td><td>固定时间间隔调用</td><td>物理相关计算、刚体操作</td><td>固定频率</td></tr><tr><td></td><td><code>OnTriggerXXX()</code></td><td>触发器碰撞发生时</td><td>处理触发器交互</td><td>事件触发时</td></tr><tr><td></td><td><code>OnCollisionXXX()</code></td><td>碰撞体碰撞发生时</td><td>处理物理碰撞</td><td>事件触发时</td></tr><tr><td><strong>游戏逻辑阶段</strong></td><td><code>Update()</code></td><td>每帧调用</td><td>游戏核心逻辑、输入处理</td><td>每帧</td></tr><tr><td></td><td><code>LateUpdate()</code></td><td>所有 Update 执行后调用</td><td>摄像机跟随、后期处理</td><td>每帧</td></tr><tr><td><strong>场景渲染阶段</strong></td><td><code>OnBecameVisible()</code></td><td>物体进入摄像机视野</td><td>性能优化相关处理</td><td>状态改变时</td></tr><tr><td></td><td><code>OnBecameInvisible()</code></td><td>物体离开摄像机视野</td><td>禁用不必要的更新</td><td>状态改变时</td></tr><tr><td></td><td><code>OnPreRender()</code></td><td>摄像机开始渲染场景前</td><td>渲染前准备工作</td><td>每帧渲染前</td></tr><tr><td></td><td><code>OnPostRender()</code></td><td>摄像机完成渲染场景后</td><td>渲染后处理工作</td><td>每帧渲染后</td></tr><tr><td><strong>UI阶段</strong></td><td><code>OnGUI()</code></td><td>渲染和处理 GUI 事件时</td><td>IMGUI 系统绘制界面</td><td>每帧多次</td></tr><tr><td><strong>暂停与退出</strong></td><td><code>OnApplicationPause()</code></td><td>应用暂停或恢复时</td><td>保存游戏状态等</td><td>状态改变时</td></tr><tr><td></td><td><code>OnDisable()</code></td><td>脚本组件禁用时</td><td>清理资源、取消事件注册</td><td>每次禁用时</td></tr><tr><td></td><td><code>OnDestroy()</code></td><td>脚本实例被销毁时</td><td>最终清理工作</td><td>仅一次</td></tr><tr><td></td><td><code>OnApplicationQuit()</code></td><td>应用退出前调用</td><td>保存数据、释放资源</td><td>仅一次</td></tr></tbody></table></div><h2 id="执行顺序示意图"><a href="#执行顺序示意图" class="headerlink" title="执行顺序示意图"></a>执行顺序示意图</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Awake → OnEnable → Start → (FixedUpdate → Update → LateUpdate)循环</span><br><span class="line">    ↓</span><br><span class="line">OnDisable → OnDestroy → OnApplicationQuit</span><br></pre></td></tr></table></figure><h2 id="重要说明"><a href="#重要说明" class="headerlink" title="重要说明"></a>重要说明</h2><ol><li><strong>执行顺序保证</strong>：同一帧内方法调用顺序固定</li><li><strong>性能优化</strong>：在不可见时通过 <code>OnBecameInvisible</code> 减少不必要的更新</li><li><strong>内存管理</strong>：在 <code>OnDestroy</code> 中清理非托管资源</li><li><strong>事件安全</strong>：在 <code>OnDisable</code> 中取消事件订阅避免内存泄漏</li></ol><h2 id="碰撞器和触发器"><a href="#碰撞器和触发器" class="headerlink" title="碰撞器和触发器"></a>碰撞器和触发器</h2><ul><li>物体发生碰撞的必要条件<ul><li>都带有碰撞器，运动的带有刚体</li></ul></li><li>角色碰撞器不能产生碰撞器事件</li></ul><h2 id="伪多线程"><a href="#伪多线程" class="headerlink" title="伪多线程"></a>伪多线程</h2><h3 id="协程"><a href="#协程" class="headerlink" title="协程"></a>协程</h3><ul><li>底层实现</li><li>引擎对象隐藏之后，协程不会执行</li><li>协程是伪多线程，因为是主线程同步下的异步实现</li><li>yield return 0 和 yield return 10 没有区别，都是下帧执行</li><li>应用场景<ul><li>资源：下载/加载</li><li>主线程逻辑分帧处理</li><li>网络通讯</li></ul></li></ul><h3 id="Invoke-和-InvokeRepeating"><a href="#Invoke-和-InvokeRepeating" class="headerlink" title="Invoke 和 InvokeRepeating"></a>Invoke 和 InvokeRepeating</h3><ul><li>区别<ul><li>Invoke：单次执行</li><li>InvokeRepeating：循环执行</li></ul></li><li>InvokeRepeating 引擎对象隐藏之后，协程会执行</li></ul><h2 id="AssetBundle"><a href="#AssetBundle" class="headerlink" title="AssetBundle"></a>AssetBundle</h2><ul><li>AssetBundle 的接口<ul><li>BuildPipline.<strong>BuildAssetBundle</strong></li></ul></li><li>AssetBundle 的压缩格式<ul><li>LZMA：对 Bundle 整体解压</li><li>LZ4：用到什么 Bundle 解压什么</li><li>不压缩</li></ul></li><li>打包粒度的权衡<ul><li>粒度大：一个小的修改可能导致大 Bundle 的下载</li><li>粒度小：io 比较多</li></ul></li><li>资源冗余打包的剔除<ul><li><strong>内部资源</strong>冗余如何处理：对于 Bundle 内的资源（贴图、材质，Shader），写资源工具创建出来，然后修改原资源的引用关系，最后走统一的打包流程。</li><li><strong>外部资源</strong>冗余如何处理：获取待打包的资产依赖项进行计算，据此提出，进行独立打包。</li></ul></li><li>资源卸载流程<ul><li>AssetBundle。Unload(true/false)参数的区别<ul><li>true：AB 及 AB load 出来的 Asset 都会被卸载</li><li>false：仅 AB 会被卸载</li></ul></li><li>AssetBundle 中的 Asset 如何卸载<ul><li>Resources.UnloadAsset：卸载指定的 Asset</li><li>Resources.UnloadUnusedAsset：未被使用的 Asset 均会被卸载</li></ul></li><li>Destory 卸载的是什么<ul><li>只会卸载被 Instantiate 的 Unity 对象</li></ul></li></ul></li></ul><h2 id="UGUI"><a href="#UGUI" class="headerlink" title="UGUI"></a>UGUI</h2><h3 id="底层"><a href="#底层" class="headerlink" title="底层"></a>底层</h3><h4 id="Rebuild"><a href="#Rebuild" class="headerlink" title="Rebuild"></a>Rebuild</h4><ul><li>什么情况下触发<ul><li>OnEnable<ul><li>调用 CacheCanvas，获取父对象的 Canvas 组件</li><li>将父对象的 Canvas 组件，注册到 GraphicRegistry</li><li>SetAllDirty<ul><li>通知 LayoutRebuilder 布局重建</li><li>Vertex 顶点信息（SetVerticesDirty）</li><li>Material 材质（SetMaterialDirty）</li></ul></li></ul></li><li>OnDisable<ul><li>从 GraphicRegistry 移除 Canvas 注册</li><li>通知 LayoutRebuilder 布局重建</li></ul></li><li>当 ReceTransform 数值改变时<ul><li>OnRectTransformDimensionsChange<ul><li>顶点 Dirty</li><li>布局 Dirty</li></ul></li></ul></li><li>父对象改变时<ul><li>OnBeforeTransformParentChanged<ul><li>从 GraphicRegistry 移除注册</li><li>重建布局</li></ul></li><li>OnTransformParentChanged<ul><li>重新获取父对象长得 Canves，并重新注册在 GraphicRegistry</li><li>SetAllDirty</li></ul></li></ul></li><li>应用动画属性后<ul><li>OnDidApplyAnimationProperties<ul><li>SetAllDirty</li></ul></li></ul></li><li>当画布层次改变时<ul><li>OnCanvasHierachyChanged<ul><li>如果 Canvas 改变，重新注册到 GraphicRegistry</li></ul></li></ul></li></ul></li><li>ReBuild 做了什么<ul><li>Rebuild Layout<ul><li>计算各元素的位置和大小</li></ul></li><li>RebuildGraphic<ul><li>UpdataGeometry 重构网格数据<ul><li>OnPopulateMesh<ul><li>设置顶点三角形</li><li>修改 Mesh 信息</li><li>将信息设置到 CanvasRenderer</li></ul></li></ul></li><li>UpdataMaterial 更新材质数据<ul><li>设置 CanvasRenderer 的材质和纹理</li></ul></li></ul></li></ul></li><li>怎么办<ul><li>动静分离，拆分 Canvas，尽量减少 Graphic Rebuild 的频率</li><li>删除不需要的节点和隐藏不用的节点，减少深度排序和 Rebuild</li><li>SrollRect 关闭 PixelPerfect，减少 Layout Rebuild 的频率</li><li>设置移动阈值，减少开销</li><li>Material.SetColor<ul><li>好处：不会更改网格信息，因此不会有 Rebuild</li><li>坏处：因为修改了材质，所以增加了一个 DrawCall</li></ul></li></ul></li></ul><h4 id="Image-和-RawImage-的区别"><a href="#Image-和-RawImage-的区别" class="headerlink" title="Image 和 RawImage 的区别"></a>Image 和 RawImage 的区别</h4><ul><li>共同点<ul><li>均派生自 MashableGraphic</li></ul></li><li>不同点<ul><li>Image<ul><li>ISerializationCallbackReceiver：实现序列化和反序列化</li><li>ILayoutElement：布局元素，调整尺寸</li><li>ICanvasRaycastFiter：IsRaycastLocationVaild 筛选处被射线照射到的图像</li></ul></li><li>RawImage<ul><li>未加工过的图片，轻量级的 Image</li><li>只提供基础的 UV 设置和事件监听</li><li>非布局元素，不像 Image 一样派生自 ILayoutElement</li></ul></li></ul></li></ul><h4 id="Event"><a href="#Event" class="headerlink" title="Event"></a>Event</h4><ul><li>清除不必要的 Event 监听：<ul><li>CanvasGroup 适时禁止 Interactable</li><li>适时禁用 UI 组件上的 RaycastTarget</li></ul></li><li>原因：<ul><li>EventSystem.Updata 遍历屏幕中所有 RaycastTarget 为 true 的对象，发射射线并排序，找到最先触发的 UI，抛出事件给逻辑层处理</li></ul></li></ul><h3 id="图集"><a href="#图集" class="headerlink" title="图集"></a>图集</h3><ul><li>同一材质，降低 DrawCall，降低内存</li><li>不同平台的纹理图集压缩格式<ul><li>And：ETC2</li><li>iOS：ASTC/ETC2</li></ul></li></ul><h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><h4 id="降-DrowCall"><a href="#降-DrowCall" class="headerlink" title="降 DrowCall"></a>降 DrowCall</h4><ul><li>合理划分图集和 Canvas</li><li>动静分离</li><li>穿透问题<ul><li>避免图集交叉，中断合批</li><li>字体和 UI 尽量不要穿透，字体先于 UI 渲染，中断合批</li></ul></li><li>用 RectMask2D 代替 Mask ：<strong>少两个 DrawCall</strong><ul><li>Mask GPU 模板剔除实现</li><li>RectMask2D GPU 顶点剔除实现</li></ul></li><li>Canvas.Group Alpha = 0，不参与绘制，没有 DrawCall，也没有 OverDraw</li></ul><h4 id="降低-OverDraw"><a href="#降低-OverDraw" class="headerlink" title="降低 OverDraw"></a>降低 OverDraw</h4><ul><li>避免多个全屏界面重叠</li><li>全屏事件点击，单独写继承自 MashableGraohic 的类，不进行 OnpopulaterMesh 顶点处理</li><li>全屏界面可以关闭后方的 3D 相机</li><li>FillCenter 勾选去除</li><li>矩形裁剪尽量采用 RectMash2D 替换 Mask：<strong>少两个 DrawCall</strong></li><li>Canvas.Group Alpha = 0，不参与绘制，没有 DrawCall，也没有 OverDraw</li></ul><h4 id="降内存"><a href="#降内存" class="headerlink" title="降内存"></a>降内存</h4><ul><li>清除 UI 预设中不必要的资源对象：减少内存和加载耗时</li><li>BestFit 去除，用 ContentSizeFitter 替代：字体的堆内存分配</li><li>Image Titied 平铺模式<ul><li>原理：接口判断条件会导致大量三角形构建</li><li>解决方案<ul><li>方案 1（缺一不可）<ul><li>不要打到图集里面</li><li>不要增加 Border</li><li>要选择 Reoeat 重复模式</li></ul></li><li>方案 2<ul><li>使用 RawImage 替代</li></ul></li></ul></li></ul></li></ul><h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h4><ul><li>DrowCall<ul><li>CPU 准备数据，调用底层渲染接口的过程</li><li>影响 CPU</li></ul></li><li>OverDraw<ul><li>单位时间内，单帧单像素被多次渲染</li><li>影响 GPU</li></ul></li><li>像素填充率<ul><li>GPU 单位时间内所渲染的像素的数量（单位：MPixels/S）</li></ul></li><li>贴图分辨率<ul><li>像素密度</li></ul></li><li>纹理填充率<ul><li>GPU 单位时间内所能处理的纹理贴图的数量</li></ul></li><li>显存带宽<ul><li>显存在单位时间内所能传输的数据的大小</li></ul></li></ul><h4 id="Mono-和-IL2CPP-的区别"><a href="#Mono-和-IL2CPP-的区别" class="headerlink" title="Mono 和 IL2CPP 的区别"></a>Mono 和 IL2CPP 的区别</h4><ul><li>原理：<ul><li>Mono：将 C#代码转为 IL 中间代码，通过各个平台的 Mono 虚拟机解释执行，在运行，解释的过程中最终转化为机器码</li><li>IL2CPP：将 C#转为 C++，通过各个平台的 C++编译器直接生成机器码</li></ul></li><li>Mono 和 IL2CPP 机器码生成的时间一个快一个慢，所以一个性能好，一个性能坏。<strong>IL2CPP 生成出的项目无法反编译</strong>，这相当于对 C#代码进行了加密，而<strong>Mono</strong>生成出的项目，是<strong>可以通过 ILSpy 反编译</strong>出来的。</li></ul><h4 id="为什么字体的-BestFit-对内存有影响"><a href="#为什么字体的-BestFit-对内存有影响" class="headerlink" title="为什么字体的 BestFit 对内存有影响"></a>为什么字体的 BestFit 对内存有影响</h4><ul><li>BestFit 受字体大小动态调整，因此字号大小不一，从而生成出不同字号的 FontTexture，对内存产生影响</li></ul><h4 id="为什么-Mash-比-RectMask2D-增加-2-个-DrowCall"><a href="#为什么-Mash-比-RectMask2D-增加-2-个-DrowCall" class="headerlink" title="为什么 Mash 比 RectMask2D 增加 2 个 DrowCall"></a>为什么 Mash 比 RectMask2D 增加 2 个 DrowCall</h4><ul><li>Mash 原理是 GPU 中的 Shader 实现<ul><li>第一个：Mask 是模板，确定绘制的剪裁区域（Mask 下的子节点根据该区域计算 Alpha 值）</li><li>第二个：Mask 是绘制剪裁区域结束的指令，用于结束计算建材的操作</li></ul></li></ul><h4 id="如果运行中将-UGUI-的-Image-对象的-Color-设置为-0，还有-OverDraw"><a href="#如果运行中将-UGUI-的-Image-对象的-Color-设置为-0，还有-OverDraw" class="headerlink" title="如果运行中将 UGUI 的 Image 对象的 Color 设置为 0，还有 OverDraw"></a>如果运行中将 UGUI 的 Image 对象的 Color 设置为 0，还有 OverDraw</h4><ul><li>有 DrawCall，也有 OverDraw</li></ul><h4 id="非-UI-方向的优化"><a href="#非-UI-方向的优化" class="headerlink" title="非 UI 方向的优化"></a>非 UI 方向的优化</h4><ul><li><strong>DrowCall</strong><ul><li>静态批处理</li><li>动态批处理</li><li>Occlusion Culing（遮蔽剔除）</li><li>Culing Distance（远近剔除）</li><li>模型 LOD</li><li>相同材质的模型进行合并</li></ul></li><li><strong>OverDraw</strong><ul><li>Occlusion Culing（遮蔽剔除）</li><li>Culing Distance（远近剔除）</li><li>模型 LOD</li></ul></li><li>内存<ul><li>Mono 方向<ul><li>编程语言层面<ul><li>字串拼接<ul><li>C#：StringBuilder</li><li>Lua：Table.Concat</li></ul></li><li>避免容器频繁扩充<ul><li>通过计算，得到容量大小时直接固定</li></ul></li><li>少在局部变量中 new 引用对象，避免 GC</li><li>避免内存碎片，提前大额内存申请<ul><li>Unity 的内存管理方式时非分代非压缩的内存管理方式</li></ul></li><li>结构体可以满足需求的情况下，尽量用结构体取代类</li></ul></li><li>配置表优化<ul><li>C#<ul><li>打包时，将所有配置文件全部压缩到一个二进制文件内</li><li>然后真机模式下读取该二进制流，通过 FileStream 进行字节偏移，以此按需取数据</li></ul></li><li>Lua<ul><li>按需 require</li></ul></li></ul></li></ul></li><li>Native 方向<ul><li>美术资源预处理<ul><li>动画<ul><li>压缩动画精度为 3 位，内存降低 40%</li></ul></li><li>模型<ul><li>Model、Read/Write Enable 关闭</li></ul></li><li>贴图<ul><li>Read/write Enable 逐像素可修改参数<ul><li>用途：只有开启此项，才可以使用<strong>exture.GetPixel</strong>接口，获取像素数据</li><li>弊端：内存中会保留一份内存的拷贝，<strong>占用双倍内存</strong></li></ul></li><li>Generate Mipmap<ul><li>用途：Mipmap 有效<strong>降低渲染带宽的压力</strong>，提升游戏的渲染效率</li><li>弊端：会增加纹理内存，额外增加 33%内存</li></ul></li></ul></li><li>粒子<ul><li>贴图尺寸 256x256</li><li>网格不超过 500 面</li><li>发射数量最大 5 个</li></ul></li></ul></li><li><strong>对象池</strong><ul><li>原理：将对象存储到一个池子里，当需要时再次使用，而不是每次实例化一个对象。</li></ul></li><li><strong>AssetBundle</strong><ul><li>规避 AB 资源打包带来的资源冗余</li><li>避免运行时的资源泄露<ul><li>AB.Unload(false)可能引发 Res 泄露<ul><li>泄露原因<ul><li>仅加载了 AB，但是之前 AB 加载出来的 Asset 可能造成泄露。</li><li>再次加载 AB，再次 LoadeAsset，此时该 Asset 与上次的 Asset 时两个东西，前者 Asset 和 AB 已经断开连接，后者是一个全新的引用关系。此时出现两份 Asset，造成了 Asset 冗余，即泄露。</li></ul></li><li>解决方式<ul><li>采用 AB.Unload(true)代替<ul><li>对 AB 进行智能化管理，实现 AB 引用计数机制：为每个对象采取引用计数管理犯法，只有当 AssetBundle 的所有对象都没有使用时，再卸载 AssetBundle。</li></ul></li><li>继续采用 AB.Unload(false)<ul><li>将 Asset 断开所有对象的引用，调用 Resouce.UnloadUnusedAsset。</li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> Unity </tag>
+            
+            <tag> 客户端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>面试考点_计网基础</title>
+      <link href="/posts/ded75e1a/"/>
+      <url>/posts/ded75e1a/</url>
+      
+        <content type="html"><![CDATA[<h1 id="网络基础"><a href="#网络基础" class="headerlink" title="网络基础"></a>网络基础</h1><h2 id="三次握手四次挥手"><a href="#三次握手四次挥手" class="headerlink" title="三次握手四次挥手"></a>三次握手四次挥手</h2><h3 id="三次握手（建立-TCP-连接）"><a href="#三次握手（建立-TCP-连接）" class="headerlink" title="三次握手（建立 TCP 连接）"></a>三次握手（建立 TCP 连接）</h3><ul><li>客户端发送连接请求报文段</li><li>服务器收到请求报文段</li><li>服务器收到请求，并发送确认报文段；客服端收到确认，并发送确认报文段。</li></ul><h3 id="四次挥手（终止-TCP-连接）"><a href="#四次挥手（终止-TCP-连接）" class="headerlink" title="四次挥手（终止 TCP 连接）"></a>四次挥手（终止 TCP 连接）</h3><ul><li>客户端打断发送终止请求报文段</li><li>服务器收到请求，并发送确认报文段</li><li>客户端收到确认，并发送确认报文段</li><li>服务收到确认并终止连接</li></ul><h2 id="TCP-和-UDP"><a href="#TCP-和-UDP" class="headerlink" title="TCP 和 UDP"></a>TCP 和 UDP</h2><ul><li>TCP：传输控制协议</li><li>UDP：用户数据报协议</li><li>两者区别：<ul><li>是否连接：<ul><li>TCP 是面向连接</li><li>UDP 是面向无连接</li></ul></li><li>是否可靠：<ul><li>TCP 可靠</li><li>UDP 不可靠</li></ul></li><li>连接对象个数：<ul><li>TCP：1 对 1</li><li>UDP：1 对 1，1 对多，多对 1，多对多</li></ul></li><li>传输方式：<ul><li>TCP：面向字节流</li><li>UDP：面向报文</li></ul></li><li>首部开销：<ul><li>TCP：TCP 开销大，最小 20 字节</li><li>UDP：UDP 仅 8 字节</li></ul></li></ul></li></ul><h2 id="线程和进程"><a href="#线程和进程" class="headerlink" title="线程和进程"></a>线程和进程</h2><ul><li>线程：同一类线程共享代码和数据空间，每一个线程有独立的运行栈和程序计数器（PC），线程切换开销最小。<strong>CPU 调度的基本单位</strong>。</li><li>进程：每个进程都有独立的代码和数据空间，进程间的切换会有较大开销，一个进程包含 1-n 个线程。<strong>操作系统资源分配最小单位</strong>。</li><li>两者区别：<ul><li>进程之间不共享全局变量。</li><li>线程之间共享全局变量，但是主意资源竞争问题，解决方法：互斥锁和线程同步。</li><li>创建进程的资源开销要比创造线程的资源开销大。</li><li>线程不能独立执行，必须存在于进程中。</li><li>多进程开发对比单进程，多线程开发稳定性要强。</li></ul></li></ul><h2 id="粘包和拆包"><a href="#粘包和拆包" class="headerlink" title="粘包和拆包"></a>粘包和拆包</h2><ul><li>粘包：<ul><li>产生原因：TCP 是<strong>面向字节流</strong>的协议，不会发送数据包，这个数据包是网络层的概念，应用程序交付给 TCP 的是结构化数据，TCP 会对这个结构化数据进行流式传输，<strong>流式传输的最大问题就是没有边界</strong>，没有边界就会造成数据粘在一起，这种就称为”粘包“。</li><li>具体概念：发送方发送的若干数据包到接收方接收时粘在一起，从接收缓冲区看，<strong>后一包数据的头紧凑者前一包数据的尾</strong>。</li></ul></li><li>如何解决粘包：<ul><li>发送端给每个数据包<strong>添加包首部</strong>，首部中应该至少<strong>包含数据包的长度</strong>，这样接收方接到数据后，通过读取包首部的长度字段，就可以知道数据包的实际长度。</li></ul></li></ul><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="握手三次，挥手四次的原因"><a href="#握手三次，挥手四次的原因" class="headerlink" title="握手三次，挥手四次的原因"></a>握手三次，挥手四次的原因</h3><ul><li>握手的时候没有数据传输，所以服务端的 SYN 和 ACK 报文可以一起发送，但是挥手的时候有数据在传输，所以 ACK 和 FIN 报文不能同时发送，需要分两步所以会比握手多一步。</li></ul><h3 id="客户端在第四次挥手后还会等待-2MSL"><a href="#客户端在第四次挥手后还会等待-2MSL" class="headerlink" title="客户端在第四次挥手后还会等待 2MSL"></a>客户端在第四次挥手后还会等待 2MSL</h3><ul><li>等待 2MSL 是因为保证服务端收到了 ACK 报文，因为网络时复杂的，很可能 ACK 报文丢失了，如果服务端没有收到 ACK 报文的话，会重新发送 FIN 报文，只有当客户端等待了 2MSL 都没有收到重发的 FIN 报文时就表示服务端时正常收到了 ACK 报文，那么这个时候客户端就可以关闭了</li><li>2MSL：<strong>两倍最大报文段生成时间</strong>，大概 4 分钟。</li></ul><h3 id="为什么-TIME-WAIT-等待时间是-2MSL"><a href="#为什么-TIME-WAIT-等待时间是-2MSL" class="headerlink" title="为什么 TIME_WAIT 等待时间是 2MSL"></a>为什么 TIME_WAIT 等待时间是 2MSL</h3><ul><li>MSL 是<strong>报文的最大生存时间</strong>，超过这个时间，报文就丢弃。</li></ul><h3 id="为什么需要-TIME-WAIT-状态"><a href="#为什么需要-TIME-WAIT-状态" class="headerlink" title="为什么需要 TIME_WAIT 状态"></a>为什么需要 TIME_WAIT 状态</h3><ul><li>为了防止错误接收历史报文，保证双方能够正常关闭</li></ul><h3 id="TCP-如何保证可靠传输的"><a href="#TCP-如何保证可靠传输的" class="headerlink" title="TCP 如何保证可靠传输的"></a>TCP 如何保证可靠传输的</h3><ul><li>TCP 通过序号和应答、超时重传机制、滑动窗口等技术实现了对数据的可靠传输，并确保数据在网络中准确无误传输。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计院八股文 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> 计算机网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>面试考点_Lua基础</title>
+      <link href="/posts/311d5b73/"/>
+      <url>/posts/311d5b73/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Lua-基础"><a href="#Lua-基础" class="headerlink" title="Lua 基础"></a>Lua 基础</h1><h2 id="基础语法考察"><a href="#基础语法考察" class="headerlink" title="基础语法考察"></a>基础语法考察</h2><ul><li>paris 和 iparis 的区别<ul><li>paris：遍历数组、hash；nil 可以输出</li><li>iparis：只能遍历非空数组部分</li></ul></li><li>点和冒号调用函数的区别<ul><li>点：无法传递自身，需要显示传递</li><li>冒号：隐式传递自身</li></ul></li></ul><h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><ul><li>Lua 如何实现面向对象<ul><li>metable 元表</li></ul></li><li>index 和 newindex 的区别<ul><li><strong>index（访问）</strong>：当子脚本不存在被访问的元素时，lua 就会调用 index，去父脚本中查找该元素</li><li><strong>newindex（更新）</strong>：当子脚本不存在被访问的元素时，我们却给该元素赋值时，默认我们没有给 newindex 赋值，Lua 直接修改父脚本里的同名元素的值；若我们给 newindex 赋值了，即指定一个函数，Lua 就会调用该函数，而不会直接去修改父脚本里的同名元素的值。</li></ul></li><li>rawget 和 rawset 有什么区别<ul><li>rawget：访问时，不想从 index 对应的原方法中查找值</li><li>rawset：更新时，不想执行 newindex 对应的元方法</li></ul></li></ul><h2 id="Lua-交互原理"><a href="#Lua-交互原理" class="headerlink" title="Lua 交互原理"></a>Lua 交互原理</h2><h3 id="Lua-与-C-交互"><a href="#Lua-与-C-交互" class="headerlink" title="Lua 与 C 交互"></a>Lua 与 C 交互</h3><ul><li>实现方式：Lua 和 C 是通过虚拟栈来交互的</li><li>C 调用 Lua：C 将数据放入栈中，Lua 去栈中取数据，然后返回数据对应的值到栈顶，再由栈顶返回 C。</li><li>Lua 调用 C：编写 C 模块，注册函数到 Lua 解释器中，然后由 Lua 调用这个模块的函数。</li></ul><h3 id="Lua-与-C-交互-1"><a href="#Lua-与-C-交互-1" class="headerlink" title="Lua 与 C#交互"></a>Lua 与 C#交互</h3><ul><li>实现方式：Lua 本身提供了 C-API，可以 PUSH 一个值到 Lua 虚拟栈上，Lua 可以通过访问 Lua 虚拟栈来访问该对象。</li><li>Lua 虚拟栈：Lua 和其他语言交换数据的中介，XLua 或者 ToLua 都对这个接口进行了封装，并提供了一些列的 Push 方法，这样就可以将 C#对象 push 到 Lua 虚拟栈上。</li></ul><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="XLua-或者-ToLua-是如何优化跨语言调用"><a href="#XLua-或者-ToLua-是如何优化跨语言调用" class="headerlink" title="XLua 或者 ToLua 是如何优化跨语言调用"></a>XLua 或者 ToLua 是如何优化跨语言调用</h3><ol><li>XLua 借助 Lua 虚拟机，具备了跨语言调用能力，其次 XLua 对 Lua 虚拟机进行了一定的封装，这样在 XLua 中就方便使用一些接口</li><li>Lua 在调用 C#时，实际传递过来的时字符串，为了防止纯反射，XLua 封装了一个 key value 的字典，这个 key 是字符串，就是引用类型的字符串，通过这个字符串就可以拿到 typeof value。通过这个方法避免反射，提高性能。</li></ol><h3 id="Lua-GC-算法（三色标记清除法）"><a href="#Lua-GC-算法（三色标记清除法）" class="headerlink" title="Lua GC 算法（三色标记清除法）"></a>Lua GC 算法（三色标记清除法）</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> 编程语言 </tag>
+            
+            <tag> Lua </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>面试考点_C#基础</title>
+      <link href="/posts/ca1b96bb/"/>
+      <url>/posts/ca1b96bb/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-基础"><a href="#C-基础" class="headerlink" title="C#基础"></a>C#基础</h1><h2 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h2><h3 id="面向对象三大特征"><a href="#面向对象三大特征" class="headerlink" title="面向对象三大特征"></a>面向对象三大特征</h3><ul><li><strong>继承</strong>：提高代码重用度</li><li><strong>封装</strong>：增强数据安全性</li><li><strong>多态</strong>：不同环境下，同名方法</li></ul><h3 id="简述值类型和引用类型"><a href="#简述值类型和引用类型" class="headerlink" title="简述值类型和引用类型"></a>简述值类型和引用类型</h3><ul><li><strong>值类型</strong>：包含了所有简单类型（整数、浮点、布尔、字符）、结构体、枚举</li><li><strong>引用类型</strong>：string、object、class、interface、delegate、array</li><li>区别<ul><li>值存储在内存栈中；引用存储在内存堆中</li><li>值类型存取快；引用类型存取慢</li><li>栈内存自动释放；堆内存由 GC 自动释放</li><li>值类型在栈中存储的是直接的值；引用类型本身是在堆中；栈中存放的是一个引用类型。</li></ul></li></ul><h3 id="结构体与类的区别"><a href="#结构体与类的区别" class="headerlink" title="结构体与类的区别"></a>结构体与类的区别</h3><ul><li>结构体是值类型，类是引用类型</li><li>结构体不允许继承，类可以继承</li><li>结构体不能显示定义默认构造函数，也没有析构函数</li><li>结构体不可以 new 直接初始化</li><li>结构体不能被静态 static 修饰</li></ul><h3 id="密封类和普通类有什么区别"><a href="#密封类和普通类有什么区别" class="headerlink" title="密封类和普通类有什么区别"></a>密封类和普通类有什么区别</h3><ul><li>密封类不能被继承，密封方法不能被重写</li></ul><h3 id="接口与抽象类的区别"><a href="#接口与抽象类的区别" class="headerlink" title="接口与抽象类的区别"></a>接口与抽象类的区别</h3><ul><li>接口不是类，不可实例化，抽象类可以间接实例化</li><li>接口完全抽象，抽象类部分抽象</li><li>接口可以多继承，抽象类是单继承</li></ul><h3 id="重载和重写的区别"><a href="#重载和重写的区别" class="headerlink" title="重载和重写的区别"></a>重载和重写的区别</h3><ul><li>重载在同类中，重写在子类中</li><li>定义方法不同，重载方法名相同，参数列表不同；重写方法名、参数列表都相同</li><li>调用方式不同，重载使用相同对象以不同参数调用，重写用不同对象以相同参数调用</li><li>多态时机不同，重载编译时多态，重写运行时多态</li></ul><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="ArrayList-和-List-的区别"><a href="#ArrayList-和-List-的区别" class="headerlink" title="ArrayList 和 List 的区别"></a>ArrayList 和 List 的区别</h3><ul><li>ArrayList 不带有泛型，数据类型丢失</li><li>List 带有泛型，数据类型不丢失</li><li>ArrayList 需要装箱拆箱，List 不需要</li></ul><h3 id="链表和数组的区别"><a href="#链表和数组的区别" class="headerlink" title="链表和数组的区别"></a>链表和数组的区别</h3><h4 id="内存布局"><a href="#内存布局" class="headerlink" title="内存布局"></a>内存布局</h4><ul><li>数组：顺序存储，占用一块连续的内存，大小固定，扩容成本大。</li><li>链表：链式存储，非连续的，并且多一个指针，不存在大小限制，天然支持动态扩容。</li></ul><h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul><li>随机查找<ul><li>数组可以支持<strong>随机访问</strong>，O(1)的时间复杂度</li><li>链表需要按顺序逐个访问，O(n)的时间复杂度</li></ul></li><li>插入删除<ul><li>数组时间复杂度 O(n)</li><li>链表时间复杂度 O</li></ul></li></ul><h3 id="列表和字典的底层实现"><a href="#列表和字典的底层实现" class="headerlink" title="列表和字典的底层实现"></a>列表和字典的底层实现</h3><h4 id="List"><a href="#List" class="headerlink" title="List"></a>List</h4><ul><li>底层实现：动态泛型可扩容数组</li><li>考题：现在 List 容量时 4 个元素，现在要插入一个新元素进去，底层会发生什么。<ul><li>容量扩容</li><li>拷贝+GC</li></ul></li></ul><h4 id="Dictionary"><a href="#Dictionary" class="headerlink" title="Dictionary"></a>Dictionary</h4><ul><li>底层实现：<ul><li>Buckets 哈希桶</li><li>entrys 数组用来存储数据</li><li>从 entrys 中删除的数据，构成一个 freelist 空闲数据链表；当插入时，优先插入数据到这个里面去。</li></ul></li><li>考题：现在 Dictionary 容量有 4 个元素，现在插入 1 个新元素进去，此时底层会发生什么。<ul><li>容量扩容</li><li>拷贝+GC</li><li>hash 找 buckets 索引</li><li>将新数据挂载到 buckets 索引处的单链表中</li></ul></li><li>考题：现在 Dictionary 容量有 4 个元素，现在删除 1 个新元素进去，此时底层会发生什么。<ul><li>查找到目标元素</li><li>修改链表指针指向</li><li>将移除的元素加入 freelist</li></ul></li><li>关于 Hash<ul><li>Hash 函数算法<ul><li><strong>Hash 桶算法</strong>：首先将 key 通过 hash 函数生成 hashcode，然后和 hash 桶的数量进行取余，结果用于确认将这个值存储到哪个桶中</li><li><strong>平方取中法</strong>：取 keyword 平方后中间几位作为散列地址</li><li><strong>随机数法</strong>：选一随机函数，取 keyword 的随机值作为散列数据，经常用于 keyword 长度不同的场合</li></ul></li><li>Hash 碰撞算法<ul><li>拉链法（开散列）：在发生哈希冲突的位置，生成一个链表，用来存储哈希冲突的元素</li><li>开放地址法（闭散列）：发生哈希冲突的位置开始，依此向后探测，直到找到下一个空位置位置。</li><li>再哈希法</li></ul></li></ul></li></ul><h2 id="设计模型"><a href="#设计模型" class="headerlink" title="设计模型"></a>设计模型</h2><h3 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h3><ul><li>概念：构造函数私有，外部无法直接创建</li><li>应用场景：管理器</li></ul><h3 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h3><ul><li>概念：通过委托实现 1 对多的订阅关系</li><li>应用场景：事件派发</li></ul><h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><ul><li>概念：根据不同条件需求，构建不同的实例</li><li>应用场景：英雄、怪物、npc</li></ul><h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><ul><li>概念：根据不同的条件需求，构建不同的实例，并且在策略模式内封装具体的自定义行为接口</li><li>应用场景：游戏设置界面，根据 GPU 性能，批量设置群组显示效果</li></ul><h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><ul><li>概念：有执行队列需求，且支持撤销需求</li><li>应用场景：FPS 输入模块，需要存储输入指令的时候</li></ul><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="C-中四种访问修饰符是哪些"><a href="#C-中四种访问修饰符是哪些" class="headerlink" title="C#中四种访问修饰符是哪些"></a>C#中四种访问修饰符是哪些</h3><ul><li>属性修饰符<ul><li>Serializable：按值将对象封送到远程服务器</li><li>STATread：是单线程套间的意思，是⼀种线程模型</li><li>MATAThread：是多线程套间的意思，也是⼀种线程模型</li></ul></li><li><strong>存取修饰符</strong><ul><li><strong>public</strong>：存取不受限制</li><li><strong>private</strong>：只有包含该成员的类可以存取</li><li><strong>internal</strong>：只有当前工程可以存取</li><li>protected：只有包含该成员的类和派生类可以存取</li></ul></li><li>类修饰符<ul><li>abstact：抽象类，指示一个类只能作为其他类的基类</li><li>sealed：密封类，指示⼀个类不能被继承</li></ul></li><li><strong>成员修饰符</strong><ul><li>abstract：指示该⽅法或属性没有实现。</li><li>sealed：密封⽅法。可以防⽌在派⽣类中对该⽅法的</li><li><strong>override（重载）</strong>：不是类的每个成员⽅法都可以作为密封⽅法密封⽅法，必须对基类的虚⽅法进⾏重载，提供具体的实现⽅法。所以，在⽅法的声明中，sealed 修饰符总是和 override 修饰符同时使⽤。</li><li><strong>delegate</strong>：委托。⽤来定义⼀个函数指针。C#中的事件驱动是基于 delegate + event 的。</li><li><strong>const</strong>：指定该成员的值只读不允许修改。</li><li>event：声明⼀个事件。</li><li>extern：指示⽅法在外部实现。</li><li><strong>override（重写）</strong>：对由基类继承成员的新实现。</li><li>readonly：指示⼀个域只能在声明时以及相同类的内部被赋值。</li><li><strong>static</strong>：指示⼀个成员属于类型本身，⽽不是属于特定的对象。即在定义后可不经实例化，就可使⽤。</li><li>virtual：指示⼀个⽅法或存取器的实现可以在继承类中被覆盖。</li><li>new：在派⽣类中隐藏指定的基类成员，从⽽实现重写的功能。 若要隐藏继承类的成员，请使⽤相同名称在派⽣类中声明该成员，并⽤ new 修饰符修饰它。</li></ul></li></ul><h3 id="装箱拆箱"><a href="#装箱拆箱" class="headerlink" title="装箱拆箱"></a>装箱拆箱</h3><ul><li>装箱：装箱就是将值类型转换为引用类型</li><li>拆箱：引用类型转化为值类型</li><li>装箱性能问题：每次装箱都要在堆里面 new 一个新对象，当量大时会影响程序效率</li></ul><h3 id="C-垃圾回收机制"><a href="#C-垃圾回收机制" class="headerlink" title="C#垃圾回收机制"></a>C#垃圾回收机制</h3><ul><li><strong>三代标记清除压缩算法</strong><ul><li>0 代：从未被标记为回收的新分配对象</li><li>1 代：0 代垃圾回收中没有被回收的对象</li><li>2 代：1 代垃圾回收后任然没有回收的对象</li><li>此外在调整分代时，有内存管理的操作，因而避免了碎片化</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 游戏开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面试 </tag>
+            
+            <tag> C# </tag>
+            
+            <tag> 编程语言 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
