@@ -1,0 +1,147 @@
+/* announcement.css - 标签式布局 */
+
+.announcement-profile {
+  padding: 0rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profile-card {
+  background: #0f0f0f;
+  border-radius: 10px;
+  padding: 1rem 1rem;
+  border: 1px solid #2a2a2a;
+  max-width: 740px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.avatar {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  text-decoration: underline;
+  text-decoration-color: #4a4a4a;
+  text-underline-offset: 4px;
+}
+
+.card-body {
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #2a2a2a;
+}
+
+.info-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: #b0b0b0;
+  padding: 0.1rem 0.6rem;
+  background: #1a1a1a;
+  border-radius: 4px;
+  border: 1px solid #333333;
+  white-space: nowrap;
+}
+
+.content {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: underline;
+  text-decoration-color: #4a4a4a;
+  text-underline-offset: 4px;
+}
+
+.card-footer {
+  padding-top: 0;
+}
+
+.wish {
+  font-size: 15px;
+  font-weight: 700;
+  color: #d0d0d0;
+  margin: 0;
+  text-align: left;
+  text-decoration: underline;
+  text-decoration-color: #4a4a4a;
+  text-underline-offset: 4px;
+  line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+  .profile-card {
+    padding: 1.5rem;
+  }
+
+  .avatar {
+    font-size: 22px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
+
+  .tag {
+    font-size: 12px;
+  }
+
+  .content {
+    font-size: 14px;
+  }
+
+  .wish {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-card {
+    padding: 1.2rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+  }
+
+  .avatar {
+    font-size: 20px;
+  }
+
+  .title {
+    font-size: 13px;
+  }
+
+  .tag {
+    font-size: 11px;
+  }
+
+  .content {
+    font-size: 13px;
+  }
+
+  .wish {
+    font-size: 13px;
+  }
+}

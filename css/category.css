@@ -1,0 +1,240 @@
+/* ========================================
+   分类页面 (/categories/) 样式
+   ======================================== */
+
+#page .category-lists .category-list .category-list-item {
+    position: relative;
+    display: inline-block;
+    padding: 1.5rem 1.2rem;
+    width: 48%;
+    font-weight: 700;
+    margin: 0 0.5% 1.5% 0.5%;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0f0f0f 0%, #161616 100%);
+    border: 1px solid #2a2a2a;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+#page .category-lists .category-list .category-list-item::after {
+    content: '\f07b';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0.8rem;
+    bottom: 0.5rem;
+    font-size: 3rem;
+    color: rgba(160, 64, 64, 0.08);
+    pointer-events: none;
+    transition: transform 0.5s ease, color 0.5s ease;
+}
+
+#page .category-lists .category-list .category-list-item:hover {
+    border-color: #555;
+    background: linear-gradient(135deg, #141414 0%, #1c1c1c 100%);
+    box-shadow: 0 0 15px rgba(160, 64, 64, 0.1);
+}
+
+#page .category-lists .category-list .category-list-item:hover::after {
+    transform: rotate(-8deg);
+    color: rgba(160, 64, 64, 0.15);
+}
+
+@media (max-width: 640px) {
+    #page .category-lists .category-list .category-list-item {
+        width: 100%;
+        margin: 0 0 1rem 0;
+    }
+}
+
+#page .category-lists .category-list .category-list-item::before {
+    display: none;
+}
+
+#page .category-lists .category-list .category-list-item .category-list-link {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-left: 0.4rem;
+    position: relative;
+    z-index: 1;
+}
+
+#page .category-lists .category-list .category-list-item .category-list-link::after {
+    content: "";
+    position: relative;
+    width: 0;
+    bottom: 0;
+    display: block;
+    height: 3px;
+    border-radius: 3px;
+    background: #a04040;
+}
+
+#page .category-lists .category-list .category-list-item .category-list-link:hover::after {
+    width: 60%;
+    left: 1%;
+    transition: all 0.6s;
+}
+
+#page .category-lists .category-list .category-list-item .category-list-count {
+    color: #999;
+    font-size: 1.1rem;
+    position: relative;
+    z-index: 1;
+}
+
+#page .category-lists .category-list .category-list-item .category-list-count::before {
+    content: "\f02d";
+    padding-right: 8px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 600;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+#page .category-list-count::after {
+    display: none;
+}
+
+
+/* ========================================
+   首页分类卡片 (hexo-butterfly-categories-card)
+   ======================================== */
+
+#categoryBar {
+    width: 100%;
+}
+
+ul.categoryBar-list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+li.categoryBar-list-item {
+    font-weight: bold;
+    display: inline-block;
+    height: auto;
+    min-height: 120px;
+    margin: 0;
+    background: linear-gradient(135deg, #0f0f0f 0%, #161616 100%);
+    border: 1px solid #2a2a2a;
+    border-radius: 10px;
+    padding: 1.2rem 1rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 calc(33.333% - 0.5rem);
+    min-width: calc(33.333% - 0.5rem);
+    position: relative;
+}
+
+li.categoryBar-list-item::after {
+    content: '\f07b';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 0.6rem;
+    bottom: 0.4rem;
+    font-size: 2.5rem;
+    color: rgba(160, 64, 64, 0.08);
+    pointer-events: none;
+    transition: transform 0.5s ease, color 0.5s ease;
+}
+
+li.categoryBar-list-item:hover {
+    border-color: #555;
+    background: linear-gradient(135deg, #141414 0%, #1c1c1c 100%);
+    box-shadow: 0 0 15px rgba(160, 64, 64, 0.1);
+}
+
+li.categoryBar-list-item:hover::after {
+    transform: rotate(-8deg);
+    color: rgba(160, 64, 64, 0.15);
+}
+
+a.categoryBar-list-link {
+    color: #fff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    position: relative;
+    z-index: 1;
+}
+
+a.categoryBar-list-link::before {
+    content: '\f07b';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: #a04040;
+    font-size: 1rem;
+    margin-right: 0.4rem;
+}
+
+a.categoryBar-list-link:after {
+    content: '';
+    position: relative;
+    width: 0;
+    bottom: 0;
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #a04040;
+}
+
+a.categoryBar-list-link:hover:after {
+    width: 90%;
+    left: 1%;
+    transition: all 0.5s;
+}
+
+span.categoryBar-list-count {
+    display: block;
+    color: #999;
+    font-size: 0.95rem;
+    margin-top: 0.3rem;
+    position: relative;
+    z-index: 1;
+}
+
+span.categoryBar-list-count::before {
+    content: '\f02d';
+    padding-right: 6px;
+    display: inline-block;
+    font-weight: 600;
+    font-style: normal;
+    font-variant: normal;
+    font-family: 'Font Awesome 6 Free';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+}
+
+span.categoryBar-list-descr {
+    padding: 0;
+    display: block;
+    color: #aaa;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+    position: relative;
+    z-index: 1;
+}
+
+@media screen and (max-width: 650px) {
+    li.categoryBar-list-item {
+        flex: 1 1 calc(48% - 0.5rem);
+        min-width: calc(48% - 0.5rem);
+        min-height: 100px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    li.categoryBar-list-item {
+        flex: 1 1 100%;
+        min-width: 100%;
+    }
+}
