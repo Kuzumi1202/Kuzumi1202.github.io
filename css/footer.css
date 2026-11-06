@@ -1,0 +1,169 @@
+#footer {
+  background-color: transparent;
+  padding: 0;
+}
+
+#footer .footer-other {
+  padding: 0;
+}
+
+.footer-copyright {
+  padding: 0;
+}
+
+.my-footer {
+  background: rgba(26, 8, 8, 0.9);
+  color: #ccc;
+  position: relative;
+  z-index: 1;
+}
+
+.my-footer-main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 20px;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.my-footer-logo img {
+  height: 36px;
+  width: auto;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.my-footer-logo a {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.my-footer-logo img:hover {
+  opacity: 1;
+}
+
+.my-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.my-footer-nav a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.my-footer-nav a:hover {
+  color: #a04040;
+}
+
+.my-footer-badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.my-footer-badges a {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.my-footer-badges img {
+  height: 28px;
+  width: auto;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.my-footer-badges img:hover {
+  opacity: 1;
+}
+
+.my-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.my-footer-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(160, 64, 64, 0.1);
+  transition: background 0.2s;
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+
+.my-footer-social a:hover {
+  background: rgba(160, 64, 64, 0.25);
+}
+
+.my-footer-social .iconfont {
+  font-size: 18px;
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.my-footer-social a:hover .iconfont {
+  color: #a04040;
+}
+
+.my-footer-copyright {
+  background: #0a0a0a;
+  border-top: 1px solid #2a2a2a;
+  padding: 12px 20px;
+  text-align: center;
+}
+
+.my-footer-copyright p {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .my-footer-main {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .my-footer-logo {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .my-footer-nav {
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .my-footer-badges {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+
+  .my-footer-social {
+    width: 100%;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}

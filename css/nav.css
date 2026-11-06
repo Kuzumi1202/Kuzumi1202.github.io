@@ -1,0 +1,41 @@
+/*
+ * 导航栏居中布局
+ * 将右侧导航内容弹性布局并推到最右边
+ */
+#nav-right {
+    flex: 1 1 auto; /* 弹性项目：可扩展、可收缩、基础大小自动 */
+    justify-content: flex-end; /* 内容对齐到末端（右侧） */
+    margin-left: auto; /* 左侧自动外边距，推至最右 */
+    display: flex; /* 使用弹性布局 */
+    flex-wrap: nowrap; /* 禁止换行 */
+}
+
+/*
+ * 移除导航栏链接下划线效果
+ * 将伪元素背景设为透明，去除下划线
+ */
+#nav *::after {
+    background-color: transparent !important; /* 透明背景，消除下划线 */
+}
+
+/*
+ * 子菜单横向排列样式
+ * 将下拉子菜单的列表项水平排列
+ */
+.menus_item_child li:not(#sidebar-menus li) {
+    float: left; /* 列表项左浮动，实现横向排列 */
+    border-radius: 6px !important; /* 圆角效果 */
+    -webkit-border-radius: 6px !important; /* Safari/Chrome 兼容 */
+    -moz-border-radius: 6px !important; /* Firefox 兼容 */
+    -ms-border-radius: 6px !important; /* IE/Edge 兼容 */
+    -o-border-radius: 6px !important; /* Opera 兼容 */
+}
+
+/*
+ * 子菜单容器居中定位
+ * 将下拉菜单水平居中于其父元素
+ */
+.menus_item_child:not(#sidebar-menus ul) {
+    left: 50%; /* 左侧定位到50% */
+    translate: -50%; /* 向左平移自身宽度的50%，实现完全居中 */
+}

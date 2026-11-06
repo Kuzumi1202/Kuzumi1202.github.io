@@ -1,0 +1,39 @@
+/* ==========================================================================
+   首页文章卡片（.recent-post-item）本地样式补丁
+   --------------------------------------------------------------------------
+   用于微调主题 homepage.styl 中需要调整的部分，其余样式沿用主题默认。
+   ========================================================================== */
+
+/* 封面四周留出 10px 间距并加圆角，让图片不贴住卡片边缘 */
+#recent-posts .recent-post-item .post_cover {
+  padding: 10px;
+  border-radius: 10px;
+}
+
+/* 悬停放大的图片只在封面内容区内裁剪，不越过 10px 留白 */
+#recent-posts .recent-post-item .post_cover > a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* 桌面端：封面用绝对单位（em），让它和文字一起随浏览器缩放，保持文字与封面的比例不变 */
+@media screen and (min-width: 769px) {
+  #recent-posts .recent-post-item {
+    height: auto;
+  }
+
+  #recent-posts .recent-post-item .post_cover {
+    width: 26em;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    flex-shrink: 0;
+  }
+
+  #recent-posts .recent-post-item .recent-post-info {
+    width: auto;
+    flex: 1;
+  }
+}
