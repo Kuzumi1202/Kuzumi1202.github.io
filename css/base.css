@@ -1,0 +1,1 @@
+#content-inner.layout{width:100%;max-width:1024px;min-width:0;box-sizing:border-box;gap:32px}@media (max-width:900px){#content-inner.layout{gap:0}}#archive,#category,#page,#post,#recent-posts,#tag{min-width:0}@media (min-width:901px){#content-inner.layout{margin:0 auto}}
