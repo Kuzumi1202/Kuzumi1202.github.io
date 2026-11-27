@@ -1,0 +1,330 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>标签 | Kuzumi</title><meta name="author" content="陈清规_"><meta name="copyright" content="陈清规_"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta property="og:type" content="website">
+<meta property="og:title" content="标签">
+<meta property="og:url" content="https://kuzumi1202.github.io/tags/index.html">
+<meta property="og:site_name" content="Kuzumi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://kuzumi1202.github.io/img/Blog/headIcon.webp">
+<meta property="article:published_time" content="2025-04-10T12:38:00.000Z">
+<meta property="article:modified_time" content="2026-11-27T11:22:08.684Z">
+<meta property="article:author" content="陈清规_">
+<meta property="article:tag" content="游戏开发">
+<meta property="article:tag" content="计算机八股文">
+<meta property="article:tag" content="陈清规">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://kuzumi1202.github.io/img/Blog/headIcon.webp"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/Blog/favicon.ico"><link rel="canonical" href="https://kuzumi1202.github.io/tags/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="/css/fontawesome.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        try {
+          const data = { value }
+
+          if (ttl != null) {
+            data.expiry = Date.now() + ttl * 86400000
+          }
+
+          localStorage.setItem(key, JSON.stringify(data))
+        } catch (e) {
+          console.error(e)
+        }
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return
+
+        try {
+          const data = JSON.parse(itemStr)
+
+          if (data.expiry && Date.now() > data.expiry) {
+            localStorage.removeItem(key)
+            return
+          }
+
+          return data.value
+        } catch {
+          localStorage.removeItem(key)
+        }
+      }
+    }
+
+    const scriptCache = new Map()
+    const cssCache = new Map()
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => {
+        if (scriptCache.has(url)) {
+          return scriptCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const script = document.createElement('script')
+
+          script.src = url
+          script.async = true
+
+          for (const key in attr) {
+            script.setAttribute(key, attr[key])
+          }
+
+          script.onload = resolve
+          script.onerror = reject
+
+          document.head.appendChild(script)
+        })
+
+        scriptCache.set(url, promise)
+
+        return promise
+      },
+      getCSS: (url, id) => {
+        if (cssCache.has(url)) {
+          return cssCache.get(url)
+        }
+
+        const promise = new Promise((resolve, reject) => {
+          const link = document.createElement('link')
+
+          link.rel = 'stylesheet'
+          link.href = url
+
+          if (id) {
+            link.id = id
+          }
+
+          link.onload = resolve
+          link.onerror = reject
+
+          document.head.appendChild(link)
+        })
+
+        cssCache.set(url, promise)
+
+        return promise
+      },
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const metaThemeColor = document.querySelector('meta[name="theme-color"]')
+      const activateDarkMode = () => {
+        document.documentElement.dataset.theme = 'dark'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.dataset.theme = 'light'
+        if (metaThemeColor !== null) {
+          metaThemeColor.setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '标签',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'page'
+}</script><link rel="stylesheet" href="/css/main.css"><!-- hexo injector head_end start --><!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.2"></head><body><div id="loading-box" onclick="document.getElementById('loading-box').classList.add('loaded')"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto'
+    document.getElementById('loading-box').classList.add('loaded')
+  },
+  initLoading: () => {
+    document.body.style.overflow = ''
+    document.getElementById('loading-box').classList.remove('loaded')
+
+  }
+}
+const loadingTimeout = setTimeout(() => preloader.endLoading(), 9000)
+const endLoading = () => {
+  clearTimeout(loadingTimeout)
+  preloader.endLoading()
+}
+window.addEventListener('load', endLoading, { once: true })
+if (document.readyState === 'complete') endLoading()
+
+if (false) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div class="bg-animation" id="web_bg" style="background: black;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Blog/headIcon.webp" onerror="this.onerror=null;this.src='/img/error/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="page type-tags" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url(/img/Posts/Top_Image.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Kuzumi</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 其他</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div><div id="nav-right"><div id="search-button"><button class="site-page social-icon search" type="button" aria-label="搜索文章"><i class="fas fa-search fa-fw"></i></button></div><div id="toggle-menu"><button class="site-page" type="button" aria-label="打开导航菜单" aria-controls="sidebar-menus" aria-expanded="false"><i class="fas fa-bars fa-fw"></i></button></div></div></nav><div id="page-site-info"><h1 id="site-title">标签</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="tag-cloud-list"><a class="tc-item" href="&#x2F;tags&#x2F;C&#x2F;"><span class="tc-name">C#</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;Lua&#x2F;"><span class="tc-name">Lua</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;Unity&#x2F;"><span class="tc-name">Unity</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;XLua&#x2F;"><span class="tc-name">XLua</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;%E5%AE%A2%E6%88%B7%E7%AB%AF&#x2F;"><span class="tc-name">客户端</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB&#x2F;"><span class="tc-name">日常生活</span><span class="tc-count" aria-label="3 篇文章">3</span></a><a class="tc-item" href="&#x2F;tags&#x2F;%E7%83%AD%E6%9B%B4%E6%96%B0&#x2F;"><span class="tc-name">热更新</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80&#x2F;"><span class="tc-name">编程语言</span><span class="tc-count" aria-label="2 篇文章">2</span></a><a class="tc-item" href="&#x2F;tags&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86&#x2F;"><span class="tc-name">计算机组成原理</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;"><span class="tc-name">计算机网络</span><span class="tc-count" aria-label="1 篇文章">1</span></a><a class="tc-item" href="&#x2F;tags&#x2F;%E9%9D%A2%E8%AF%95&#x2F;"><span class="tc-name">面试</span><span class="tc-count" aria-label="6 篇文章">6</span></a></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Blog/headIcon.webp" onerror="this.onerror=null;this.src='/img/error/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">陈清规_</div><div class="author-info-description">愿你我皆能被这世间温柔以待</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">11</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Kuzumi1202"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:kuzumi1202@163.com" title="Email" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a><a class="social-icon" href="https://space.bilibili.com/71240967" target="_blank" rel="noopener noreferrer" title="哔哩哔哩" aria-label="哔哩哔哩"><i class="fab fa-bilibili" aria-hidden="true"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>介绍</span></div><div class="announcement_content"><div class="announcement-signature">
+  <p class="sign">愿你我皆能被<br>这世间<em>温柔</em>以待</p>
+  <span class="rule"></span>
+  <p class="meta">
+    <span class="role">U3D 客户端开发</span>
+    <i class="dot"></i>
+    <span class="tag">INFJ</span>
+  </p>
+</div>
+</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/188757f3/" title="2026 年 11 月 15 日">2026 年 11 月 15 日</a><time datetime="2026-11-15T07:56:52.000Z" title="发表于 2026-11-15 15:56:52">2026-11-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/aaa96dc1/" title="2026 年 05 月 15 日">2026 年 05 月 15 日</a><time datetime="2026-05-15T15:56:52.000Z" title="发表于 2026-05-15 23:56:52">2026-05-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/7827ab9a/" title="2026 年 01 月 11 日">2026 年 01 月 11 日</a><time datetime="2026-01-11T14:43:52.000Z" title="发表于 2026-01-11 22:43:52">2026-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/2d5ee4f4/" title="面试考点：计算机组成原理">面试考点：计算机组成原理</a><time datetime="2025-12-10T08:03:51.000Z" title="发表于 2025-12-10 16:03:51">2025-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/cb93a20b/" title="面试考点：Unity 热更新机制">面试考点：Unity 热更新机制</a><time datetime="2025-10-28T10:06:33.000Z" title="发表于 2025-10-28 18:06:33">2025-10-28</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline"><i class="fas fa-folder-open"></i><span>分类</span></div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%97%A5%E5%B8%B8%E7%A2%8E%E7%A2%8E%E5%BF%B5/"><span class="card-category-list-name">日常碎碎念</span><span class="card-category-list-count">3</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/"><span class="card-category-list-name">游戏开发</span><span class="card-category-list-count">4</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E8%AE%A1%E9%99%A2%E5%85%AB%E8%82%A1%E6%96%87/"><span class="card-category-list-name">计院八股文</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a class="aside-tag" href="/tags/C/"><span class="name">C#</span><span class="num">1</span></a><a class="aside-tag" href="/tags/Lua/"><span class="name">Lua</span><span class="num">1</span></a><a class="aside-tag" href="/tags/Unity/"><span class="name">Unity</span><span class="num">1</span></a><a class="aside-tag" href="/tags/XLua/"><span class="name">XLua</span><span class="num">1</span></a><a class="aside-tag" href="/tags/%E5%AE%A2%E6%88%B7%E7%AB%AF/"><span class="name">客户端</span><span class="num">1</span></a><a class="aside-tag" href="/tags/%E6%97%A5%E5%B8%B8%E7%94%9F%E6%B4%BB/"><span class="name">日常生活</span><span class="num">3</span></a><a class="aside-tag" href="/tags/%E7%83%AD%E6%9B%B4%E6%96%B0/"><span class="name">热更新</span><span class="num">1</span></a><a class="aside-tag" href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"><span class="name">编程语言</span><span class="num">2</span></a><a class="aside-tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/"><span class="name">计算机组成原理</span><span class="num">1</span></a><a class="aside-tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"><span class="name">计算机网络</span><span class="num">1</span></a><a class="aside-tag" href="/tags/%E9%9D%A2%E8%AF%95/"><span class="name">面试</span><span class="num">6</span></a></div></div><div class="card-widget card-archives">
+    <div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/11/">
+            <span class="card-archive-list-date">
+              十一月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/05/">
+            <span class="card-archive-list-date">
+              五月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">9</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-11-27T11:22:25.940Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"></div><div class="footer_custom_text"><div class="my-footer">
+  <div class="my-footer-kicker">
+    <span>SYS / FOOTER</span>
+    <span class="my-footer-kicker-line" aria-hidden="true"></span>
+    <span>EST. 2025</span>
+  </div>
+  <div class="my-footer-main">
+    <div class="my-footer-logo">
+      <a href="/" title="返回首页">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/Blog/icon.png" alt="Logo">
+      </a>
+    </div>
+    <nav class="my-footer-nav" aria-label="页脚导航">
+      <a href="/about/">关于</a>
+      <a href="/archives/">时间轴</a>
+      <a href="/categories/">分类</a>
+      <a href="/privacy/">隐私政策</a>
+    </nav>
+    <div class="my-footer-social">
+      <a href="https://github.com/Kuzumi1202" target="_blank" rel="external nofollow noopener noreferrer" aria-label="GitHub" title="GitHub">
+        <i class="iconfont icon-github-fill"></i>
+      </a>
+      <a href="mailto:Kuzumi1202@163.com" aria-label="Email" title="Email">
+        <i class="iconfont icon-youxiang"></i>
+      </a>
+      <a href="https://weibo.com/u/3777761640" target="_blank" rel="external nofollow noopener noreferrer" aria-label="微博" title="微博">
+        <i class="iconfont icon-xinlangweibo"></i>
+      </a>
+      <a href="https://space.bilibili.com/71240967" target="_blank" rel="external nofollow noopener noreferrer" aria-label="哔哩哔哩" title="哔哩哔哩">
+        <i class="iconfont icon-bilibili"></i>
+      </a>
+    </div>
+  </div>
+  <div class="my-footer-copyright">
+    <p>©2026 陈清规_ | Per Aspera Ad Astra</p>
+    <div class="my-footer-artwork">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/footer/logo.png" alt="">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/footer/name.png" alt="">
+    </div>
+    <span class="my-footer-build">KUZUMI / BUILT WITH HEXO</span>
+  </div>
+</div>
+</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script async src="/js/diytitle.js"></script><script async src="/js/grayscale.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog" role="dialog" aria-modal="true" aria-labelledby="local-search-title"><nav class="search-nav"><span class="search-dialog-title" id="local-search-title">搜索文章</span><span id="loading-status"></span><button class="search-close-button" type="button" aria-label="关闭搜索"><span aria-hidden="true">×</span></button></nav><div class="text-center" id="loading-database"><span>[ LOADING ] 数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><label class="search-input-label" for="search-query">SEARCH / 全站检索</label><input class="local-search-box--input" id="search-query" placeholder="输入关键词，寻找一篇文章…" type="search" autocomplete="off" aria-label="搜索文章关键词"/></div></div><hr/><div id="local-search-results"></div><div class="search-idle"><span class="search-idle-index">INDEX / 01</span><p>从一个关键词开始。</p><span>搜索文章标题与正文</span></div><div id="local-search-stats-wrap" role="status" aria-live="polite"></div></div><footer class="search-footer"><span>KUZUMI / SEARCH</span><span><kbd>ESC</kbd> 关闭</span></footer></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 190px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 160px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/计院八股文/">计院八股文</a><span class="categoryBar-list-count">2</span><span class="categoryBar-list-descr">每个计院学生都要挨得揍</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/日常碎碎念/">日常碎碎念</a><span class="categoryBar-list-count">3</span><span class="categoryBar-list-descr">逃避不是解决之道</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" href="categories/游戏开发/">游戏开发</a><span class="categoryBar-list-count">4</span><span class="categoryBar-list-descr">逃逃逃，跑跑跑</span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/'|| '/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --></body></html>
